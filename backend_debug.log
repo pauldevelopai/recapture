@@ -1,0 +1,161 @@
+INFO:     Will watch for changes in these directories: ['/Users/paulmcnally/Developai Dropbox/Paul McNally/Mac/Documents/ONMAC/PYTHON 2025/recapture']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [86889] using WatchFiles
+INFO:     Started server process [87459]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+DEBUG: OpenAI API Key loaded: True
+Starting data ingestion...
+Collection cleared.
+Successfully added 10 documents to vector store.
+Data ingestion complete.
+INFO:     127.0.0.1:57842 - "POST /topics?topic=Flat%20Earth HTTP/1.1" 200 OK
+Running Threat Intel Pipeline...
+Discovering content for topics: ['Flat Earth']
+Discovery Agent: Searching for 'Flat Earth'...
+DEBUG: Found result: Flat Earth - Wikipedia
+DEBUG: Found result: Flat Earth | Theory, Model, Meaning, & Facts | Britannica
+DEBUG: Found result: 35 Facts About Flat Earth Myth
+DEBUG: Found result: Flat earth | Research Starters - EBSCO
+DEBUG: Found result: How to debate a flat-Earther - Proven scientific arguments and ...
+DEBUG: Total results found: 5
+DEBUG: Discovered 5 items.
+INFO:     127.0.0.1:57849 - "POST /pipeline/run HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60715 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60715 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61003 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61003 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61003 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61003 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61272 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61272 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61272 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61273 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61274 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61272 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61273 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61274 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61335 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61336 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61335 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61336 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61527 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61528 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61527 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61675 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62071 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62072 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62073 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62073 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62072 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62071 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62523 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62523 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62545 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62545 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62591 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62591 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62961 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62961 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63470 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63471 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63472 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63470 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63471 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63472 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63472 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63472 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50447 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50448 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50447 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50449 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50448 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50450 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50447 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50451 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50450 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50448 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50447 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64964 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64964 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64982 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64983 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64984 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64985 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64986 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64985 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64983 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64982 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64984 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64986 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65005 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65005 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65009 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65009 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65054 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65054 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65054 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65066 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65054 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65068 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65069 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65288 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65289 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65288 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65290 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65289 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65291 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65288 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65292 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65289 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65291 - "GET /api/profiles/c4d0cda9-b31d-4d9c-a533-9c1206e03c8e/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65292 - "GET /trends HTTP/1.1" 200 OK

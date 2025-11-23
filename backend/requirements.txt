@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+requests
+beautifulsoup4
+openai
+python-dotenv
+chromadb
+tiktoken
+duckduckgo-search
