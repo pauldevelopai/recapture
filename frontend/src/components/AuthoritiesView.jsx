@@ -3,37 +3,37 @@ import axios from 'axios';
 import { UserCheck, Plus, Trash2, Users } from 'lucide-react';
 
 export default function AuthoritiesView() {
-    const [profiles, setProfiles] = useState([]);
-    const [selectedProfile, setSelectedProfile] = useState('');
+    const [subjects, setSubjects] = useState([]);
+    const [selectedSubject, setSelectedSubject] = useState('');
     const [authorities, setAuthorities] = useState([]);
     const [newAuthority, setNewAuthority] = useState({ name: '', role: '', relation: '' });
     const [isAdding, setIsAdding] = useState(false);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetchProfiles();
+        fetchSubjects();
     }, []);
 
     useEffect(() => {
-        if (selectedProfile) {
-            fetchAuthorities(selectedProfile);
+        if (selectedSubject) {
+            fetchAuthorities(selectedSubject);
         } else {
             setAuthorities([]);
         }
-    }, [selectedProfile]);
+    }, [selectedSubject]);
 
-    const fetchProfiles = async () => {
+    const fetchSubjects = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/profiles');
-            setProfiles(res.data);
-            if (res.data.length > 0) setSelectedProfile(res.data[0].id);
-        } catch (e) { console.error("Failed to fetch profiles", e); }
+            const res = await axios.get('http://127.0.0.1:8000/api/subjects');
+            setSubjects(res.data);
+            if (res.data.length > 0) setSelectedSubject(res.data[0].id);
+        } catch (e) { console.error("Failed to fetch subjects", e); }
     };
 
-    const fetchAuthorities = async (pid) => {
+    const fetchAuthorities = async (sid) => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/api/profiles/${pid}/authorities`);
+            const res = await axios.get(`http://127.0.0.1:8000/api/subjects/${sid}/authorities`);
             setAuthorities(res.data);
         } catch (e) { console.error("Failed to fetch authorities", e); }
         finally { setLoading(false); }
@@ -41,24 +41,24 @@ export default function AuthoritiesView() {
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        if (!newAuthority.name || !selectedProfile) return;
+        if (!newAuthority.name || !selectedSubject) return;
 
         try {
-            await axios.post(`http://127.0.0.1:8000/api/profiles/${selectedProfile}/authorities`, {
+            await axios.post(`http://127.0.0.1:8000/api/subjects/${selectedSubject}/authorities`, {
                 ...newAuthority,
-                profile_id: selectedProfile
+                subject_id: selectedSubject
             });
             setNewAuthority({ name: '', role: '', relation: '' });
             setIsAdding(false);
-            fetchAuthorities(selectedProfile);
+            fetchAuthorities(selectedSubject);
         } catch (e) { alert("Failed to add authority"); }
     };
 
     const handleDelete = async (id) => {
-        if (!selectedProfile) return;
+        if (!selectedSubject) return;
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/profiles/${selectedProfile}/authorities/${id}`);
-            fetchAuthorities(selectedProfile);
+            await axios.delete(`http://127.0.0.1:8000/api/subjects/${selectedSubject}/authorities/${id}`);
+            fetchAuthorities(selectedSubject);
         } catch (e) { alert("Failed to delete authority"); }
     };
 
@@ -67,23 +67,23 @@ export default function AuthoritiesView() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
                     <h1>Authorities</h1>
-                    <p className="text-muted">Manage influential figures for specific profiles.</p>
+                    <p className="text-muted">Manage influential figures for specific subjects.</p>
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <div style={{ position: 'relative' }}>
                         <Users size={16} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                         <select
-                            value={selectedProfile}
-                            onChange={(e) => setSelectedProfile(e.target.value)}
+                            value={selectedSubject}
+                            onChange={(e) => setSelectedSubject(e.target.value)}
                             style={{ padding: '0.5rem 0.5rem 0.5rem 2.5rem', borderRadius: 'var(--radius)', minWidth: '200px' }}
                         >
-                            {profiles.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
-                            {profiles.length === 0 && <option value="">No profiles found</option>}
+                            {subjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                            {subjects.length === 0 && <option value="">No subjects found</option>}
                         </select>
                     </div>
 
-                    <button className="btn btn-primary" onClick={() => setIsAdding(!isAdding)} disabled={!selectedProfile}>
+                    <button className="btn btn-primary" onClick={() => setIsAdding(!isAdding)} disabled={!selectedSubject}>
                         <Plus size={18} />
                         Add Authority
                     </button>
@@ -92,7 +92,7 @@ export default function AuthoritiesView() {
 
             {isAdding && (
                 <div className="card" style={{ marginBottom: '2rem' }}>
-                    <h3>Add New Authority for {profiles.find(p => p.id === selectedProfile)?.name}</h3>
+                    <h3>Add New Authority for {subjects.find(s => s.id === selectedSubject)?.name}</h3>
                     <form onSubmit={handleAdd} style={{ display: 'grid', gap: '1rem', marginTop: '1rem' }}>
                         <div>
                             <label style={{ display: 'block', marginBottom: '0.5rem' }}>Name</label>
@@ -157,7 +157,7 @@ export default function AuthoritiesView() {
                 ))}
                 {!loading && authorities.length === 0 && (
                     <div className="text-muted" style={{ textAlign: 'center', padding: '2rem', border: '1px dashed var(--border)', borderRadius: 'var(--radius)' }}>
-                        No authorities added for this profile yet.
+                        No authorities added for this subject yet.
                     </div>
                 )}
             </div>

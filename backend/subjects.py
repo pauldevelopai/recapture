@@ -3,50 +3,50 @@ from typing import List
 import uuid
 import json
 from datetime import datetime
-from .models import UserProfile, ContentLog
+from .models import Subject, ContentLog, Authority
 from .database import get_db_connection
 
 router = APIRouter()
 
-@router.get("/profiles", response_model=List[UserProfile])
-async def get_profiles():
+@router.get("/subjects", response_model=List[Subject])
+async def get_subjects():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM profiles")
+    cursor.execute("SELECT * FROM subjects")
     rows = cursor.fetchall()
     conn.close()
     
-    profiles = []
+    subjects = []
     for row in rows:
-        profiles.append(UserProfile(
+        subjects.append(Subject(
             id=row['id'],
             name=row['name'],
             age=row['age'],
             risk_level=row['risk_level'],
             notes=row['notes']
         ))
-    return profiles
+    return subjects
 
-@router.post("/profiles", response_model=UserProfile)
-async def create_profile(profile: UserProfile):
-    if not profile.id:
-        profile.id = str(uuid.uuid4())
+@router.post("/subjects", response_model=Subject)
+async def create_subject(subject: Subject):
+    if not subject.id:
+        subject.id = str(uuid.uuid4())
     
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO profiles (id, name, age, risk_level, notes) VALUES (?, ?, ?, ?, ?)",
-        (profile.id, profile.name, profile.age, profile.risk_level, profile.notes)
+        "INSERT INTO subjects (id, name, age, risk_level, notes) VALUES (?, ?, ?, ?, ?)",
+        (subject.id, subject.name, subject.age, subject.risk_level, subject.notes)
     )
     conn.commit()
     conn.close()
-    return profile
+    return subject
 
-@router.get("/profiles/{profile_id}/logs", response_model=List[ContentLog])
-async def get_content_logs(profile_id: str):
+@router.get("/subjects/{subject_id}/logs", response_model=List[ContentLog])
+async def get_content_logs(subject_id: str):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM content_logs WHERE profile_id = ? ORDER BY timestamp DESC", (profile_id,))
+    cursor.execute("SELECT * FROM content_logs WHERE subject_id = ? ORDER BY timestamp DESC", (subject_id,))
     rows = cursor.fetchall()
     conn.close()
     
@@ -54,7 +54,7 @@ async def get_content_logs(profile_id: str):
     for row in rows:
         logs.append(ContentLog(
             id=row['id'],
-            profile_id=row['profile_id'],
+            subject_id=row['subject_id'],
             content=row['content'],
             source_url=row['source_url'],
             timestamp=row['timestamp'],
@@ -63,22 +63,22 @@ async def get_content_logs(profile_id: str):
         ))
     return logs
 
-@router.post("/profiles/{profile_id}/logs", response_model=ContentLog)
-async def add_content_log(profile_id: str, log: ContentLog):
+@router.post("/subjects/{subject_id}/logs", response_model=ContentLog)
+async def add_content_log(subject_id: str, log: ContentLog):
     if not log.id:
         log.id = str(uuid.uuid4())
     
-    log.profile_id = profile_id
+    log.subject_id = subject_id
     if not log.timestamp:
         log.timestamp = datetime.now().isoformat()
 
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO content_logs (id, profile_id, content, source_url, timestamp, analysis_id, detected_trends) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO content_logs (id, subject_id, content, source_url, timestamp, analysis_id, detected_trends) VALUES (?, ?, ?, ?, ?, ?, ?)",
         (
             log.id, 
-            log.profile_id, 
+            log.subject_id, 
             log.content, 
             log.source_url, 
             log.timestamp, 
@@ -90,13 +90,11 @@ async def add_content_log(profile_id: str, log: ContentLog):
     conn.close()
     return log
 
-from .models import Authority
-
-@router.get("/profiles/{profile_id}/authorities", response_model=List[Authority])
-async def get_authorities(profile_id: str):
+@router.get("/subjects/{subject_id}/authorities", response_model=List[Authority])
+async def get_authorities(subject_id: str):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM authorities WHERE profile_id = ?", (profile_id,))
+    cursor.execute("SELECT * FROM authorities WHERE subject_id = ?", (subject_id,))
     rows = cursor.fetchall()
     conn.close()
     
@@ -104,34 +102,34 @@ async def get_authorities(profile_id: str):
     for row in rows:
         authorities.append(Authority(
             id=row['id'],
-            profile_id=row['profile_id'],
+            subject_id=row['subject_id'],
             name=row['name'],
             role=row['role'],
             relation=row['relation']
         ))
     return authorities
 
-@router.post("/profiles/{profile_id}/authorities", response_model=Authority)
-async def add_authority(profile_id: str, authority: Authority):
+@router.post("/subjects/{subject_id}/authorities", response_model=Authority)
+async def add_authority(subject_id: str, authority: Authority):
     if not authority.id:
         authority.id = str(uuid.uuid4())
-    authority.profile_id = profile_id
+    authority.subject_id = subject_id
     
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO authorities (id, profile_id, name, role, relation) VALUES (?, ?, ?, ?, ?)",
-        (authority.id, authority.profile_id, authority.name, authority.role, authority.relation)
+        "INSERT INTO authorities (id, subject_id, name, role, relation) VALUES (?, ?, ?, ?, ?)",
+        (authority.id, authority.subject_id, authority.name, authority.role, authority.relation)
     )
     conn.commit()
     conn.close()
     return authority
 
-@router.delete("/profiles/{profile_id}/authorities/{authority_id}")
-async def delete_authority(profile_id: str, authority_id: str):
+@router.delete("/subjects/{subject_id}/authorities/{authority_id}")
+async def delete_authority(subject_id: str, authority_id: str):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM authorities WHERE id = ? AND profile_id = ?", (authority_id, profile_id))
+    cursor.execute("DELETE FROM authorities WHERE id = ? AND subject_id = ?", (authority_id, subject_id))
     conn.commit()
     conn.close()
     return {"status": "deleted"}

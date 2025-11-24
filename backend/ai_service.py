@@ -120,3 +120,42 @@ async def generate_argument(
             argument_text=f"Error generating argument: {str(e)}",
             talking_points=["Error"]
         )
+
+async def simulate_subject_response(
+    subject_profile: dict,
+    subject_history: list,
+    argument_text: str
+) -> str:
+    """
+    Simulates how the Subject (Digital Clone) would respond to the generated argument.
+    """
+    try:
+        system_prompt = f"""You are roleplaying as a young person named {subject_profile.get('name', 'Alex')}.
+        
+        YOUR PROFILE:
+        - Age: {subject_profile.get('age', 'Unknown')}
+        - Risk Level: {subject_profile.get('risk_level', 'Unknown')}
+        - Personality/Notes: {subject_profile.get('notes', '')}
+        
+        YOUR RECENT CONSUMPTION HISTORY (What you've been reading/watching):
+        {json.dumps(subject_history[:5], indent=2)}
+        
+        INSTRUCTIONS:
+        - Respond to the input argument as if you are this person.
+        - Use the tone, slang, and attitude consistent with your profile and risk level.
+        - If you are "High" risk or "Critical", be defensive, dismissive, or repeat radicalized talking points.
+        - If you are "Low" risk, be more open but perhaps skeptical.
+        - Keep the response relatively short (1-3 sentences).
+        """
+        
+        response = await client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": argument_text}
+            ]
+        )
+        
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"Error simulating response: {str(e)}"

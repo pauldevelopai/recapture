@@ -1,5 +1,5 @@
 from .vector_store import add_documents, clear_collection
-from .profiles import get_profiles
+from .subjects import get_subjects
 from .trend_monitor import get_active_trends
 import asyncio
 
@@ -16,14 +16,14 @@ async def ingest_all_data():
     metadatas = []
     ids = []
     
-    # 1. Ingest Profiles
-    profiles = await get_profiles()
-    for p in profiles:
-        # Create a descriptive string for the profile
-        doc_text = f"Profile: {p.name}, Age: {p.age}, Risk Level: {p.risk_level}. Notes: {p.notes}"
+    # 1. Ingest Subjects
+    subjects = await get_subjects()
+    for s in subjects:
+        # Create a descriptive string for the subject
+        doc_text = f"Subject: {s.name}, Age: {s.age}, Risk Level: {s.risk_level}. Notes: {s.notes}"
         documents.append(doc_text)
-        metadatas.append({"type": "profile", "id": str(p.id), "name": p.name})
-        ids.append(f"profile_{p.id}")
+        metadatas.append({"type": "subject", "id": str(s.id), "name": s.name})
+        ids.append(f"subject_{s.id}")
         
     # 2. Ingest Trends
     trends = await get_active_trends()
@@ -42,13 +42,27 @@ async def ingest_all_data():
     conn.close()
 
     for auth in auth_rows:
-        doc_text = f"Authority: {auth['name']}, Role: {auth['role']}, Relation: {auth['relation']} (Profile ID: {auth['profile_id']})."
+        doc_text = f"Authority: {auth['name']}, Role: {auth['role']}, Relation: {auth['relation']} (Subject ID: {auth['subject_id']})."
         documents.append(doc_text)
-        metadatas.append({"type": "authority", "name": auth['name'], "profile_id": auth['profile_id']})
+        metadatas.append({"type": "authority", "name": auth['name'], "subject_id": auth['subject_id']})
         ids.append(f"authority_{auth['id']}")
 
-    if documents:
-        add_documents(documents, metadatas, ids)
+    # Deduplicate documents based on IDs
+    unique_docs = {}
+    for i, doc_id in enumerate(ids):
+        if doc_id not in unique_docs:
+            unique_docs[doc_id] = {
+                "document": documents[i],
+                "metadata": metadatas[i],
+                "id": doc_id
+            }
+    
+    final_documents = [item["document"] for item in unique_docs.values()]
+    final_metadatas = [item["metadata"] for item in unique_docs.values()]
+    final_ids = [item["id"] for item in unique_docs.values()]
+
+    if final_documents:
+        add_documents(final_documents, final_metadatas, final_ids)
         print("Data ingestion complete.")
     else:
         print("No data to ingest.")

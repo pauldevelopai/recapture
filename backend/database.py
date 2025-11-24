@@ -2,7 +2,8 @@ import sqlite3
 from typing import List, Optional
 from .models import DisinformationTrend
 
-DB_NAME = "recapture.db"
+import os
+DB_NAME = os.getenv("DB_NAME", "recapture.db")
 
 def init_db():
     """Initialize the SQLite database with required tables."""
@@ -22,9 +23,9 @@ def init_db():
     )
     ''')
 
-    # Kid Profiles Table
+    # Subjects Table (formerly Profiles)
     cursor.execute('''
-    CREATE TABLE IF NOT EXISTS profiles (
+    CREATE TABLE IF NOT EXISTS subjects (
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,
         age INTEGER,
@@ -37,13 +38,13 @@ def init_db():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS content_logs (
         id TEXT PRIMARY KEY,
-        profile_id TEXT,
+        subject_id TEXT,
         content TEXT,
         source_url TEXT,
         timestamp TEXT,
         analysis_id TEXT,
         detected_trends TEXT, -- Stored as JSON
-        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+        FOREIGN KEY(subject_id) REFERENCES subjects(id)
     )
     ''')
     
@@ -51,11 +52,52 @@ def init_db():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS authorities (
         id TEXT PRIMARY KEY,
-        profile_id TEXT,
+        subject_id TEXT,
         name TEXT,
         role TEXT,
         relation TEXT,
-        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+        FOREIGN KEY(subject_id) REFERENCES subjects(id)
+    )
+    ''')
+
+    # Sources Table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS sources (
+        id TEXT PRIMARY KEY,
+        name TEXT,
+        url TEXT,
+        type TEXT,
+        status TEXT,
+        last_scraped TEXT
+    )
+    ''')
+
+    # Raw Content Table (Pipeline)
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS raw_content (
+        id TEXT PRIMARY KEY,
+        source_id TEXT,
+        content TEXT,
+        url TEXT,
+        timestamp TEXT,
+        status TEXT, -- pending, approved, discarded, trained
+        analysis_summary TEXT,
+        risk_score REAL
+    )
+    ''')
+
+    # Listening Results Table (Live Feed)
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS listening_results (
+        id TEXT PRIMARY KEY,
+        source_platform TEXT,
+        author TEXT,
+        content TEXT,
+        timestamp TEXT,
+        matched_trend_id TEXT,
+        matched_trend_topic TEXT,
+        severity TEXT,
+        url TEXT
     )
     ''')
     

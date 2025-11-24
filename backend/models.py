@@ -35,16 +35,16 @@ class RedFlag(BaseModel):
     category: str
     associated_trend_id: Optional[str] = None
 
-class UserProfile(BaseModel):
-    id: Optional[str] = None
+class Subject(BaseModel):
+    id: str
     name: str
     age: int
-    risk_level: str = "Low" # Low, Medium, High
+    risk_level: str  # e.g., "Low", "Medium", "High", "Critical"
     notes: Optional[str] = None
 
 class ContentLog(BaseModel):
     id: Optional[str] = None
-    profile_id: str
+    subject_id: str
     content: str
     source_url: Optional[str] = None
     timestamp: Optional[str] = None # ISO format
@@ -71,7 +71,19 @@ class RawContent(BaseModel):
 
 class Authority(BaseModel):
     id: Optional[str] = None
-    profile_id: str
+    subject_id: Optional[str] = None # Optional because it can be inferred from URL
     name: str
     role: str
     relation: str
+
+class ListeningResult(BaseModel):
+    id: str
+    source_platform: str  # e.g., "Twitter", "4chan"
+    author: str
+    content: str
+    timestamp: str
+    matched_trend_id: Optional[str] = None
+    matched_trend_topic: Optional[str] = None
+    severity: str = "Low"
+    url: Optional[str] = None
+

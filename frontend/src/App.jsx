@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import Dashboard from './components/Dashboard';
 import Scanner from './components/Scanner';
 import ArgumentBuilder from './components/ArgumentBuilder';
-import ProfilesView from './components/ProfilesView';
+import SubjectsView from './components/SubjectsView';
 import AuthoritiesView from './components/AuthoritiesView';
 import ChatInterface from './components/ChatInterface';
 import IntelCenter from './components/IntelCenter';
@@ -31,7 +31,7 @@ function App() {
             <span>RECAPTURE</span>
           </div>
           <div className="nav-links">
-            <NavLink to="/" icon={Users}>Profiles</NavLink>
+            <NavLink to="/" icon={Users}>Subjects</NavLink>
             <NavLink to="/intel" icon={Database}>Intel Center</NavLink>
             <NavLink to="/authorities" icon={UserCheck}>Authorities</NavLink>
             <NavLink to="/arguments" icon={MessageSquare}>Arguments</NavLink>
@@ -45,7 +45,7 @@ function App() {
 
         <main className="main-content"> {/* Changed class name */}
           <Routes>
-            <Route path="/" element={<ProfilesView />} />
+            <Route path="/" element={<SubjectsView />} />
             <Route path="/intel" element={<IntelCenter />} />
             <Route path="/authorities" element={<AuthoritiesView />} />
             <Route path="/arguments" element={<ArgumentBuilder />} />

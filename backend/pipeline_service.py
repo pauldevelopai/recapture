@@ -6,42 +6,104 @@ from .ai_service import analyze_text
 from .database import get_db_connection
 import requests
 from bs4 import BeautifulSoup
-
-# In-memory storage for demo (replace with DB in production)
-SOURCES = []
-RAW_CONTENT = []
+import json
 
 async def get_sources() -> List[Source]:
-    return SOURCES
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM sources")
+    rows = cursor.fetchall()
+    conn.close()
+    
+    sources = []
+    for row in rows:
+        sources.append(Source(
+            id=row['id'],
+            name=row['name'],
+            url=row['url'],
+            type=row['type'],
+            status=row['status'],
+            last_scraped=row['last_scraped']
+        ))
+    return sources
 
 async def add_source(source: Source) -> Source:
     if not source.id:
         source.id = str(uuid.uuid4())
-    SOURCES.append(source)
+    
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO sources (id, name, url, type, status, last_scraped) VALUES (?, ?, ?, ?, ?, ?)",
+        (source.id, source.name, source.url, source.type, source.status, source.last_scraped)
+    )
+    conn.commit()
+    conn.close()
     return source
 
 async def delete_source(source_id: str):
-    global SOURCES
-    SOURCES = [s for s in SOURCES if s.id != source_id]
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM sources WHERE id = ?", (source_id,))
+    conn.commit()
+    conn.close()
 
 async def get_raw_content() -> List[RawContent]:
-    return sorted(RAW_CONTENT, key=lambda x: x.timestamp or "", reverse=True)
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM raw_content ORDER BY timestamp DESC")
+    rows = cursor.fetchall()
+    conn.close()
+    
+    content_list = []
+    for row in rows:
+        content_list.append(RawContent(
+            id=row['id'],
+            source_id=row['source_id'],
+            content=row['content'],
+            url=row['url'],
+            timestamp=row['timestamp'],
+            status=row['status'],
+            analysis_summary=row['analysis_summary'],
+            risk_score=row['risk_score']
+        ))
+    return content_list
+
+async def add_raw_content(content: RawContent):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    # Check for duplicates by URL if URL exists
+    if content.url:
+        cursor.execute("SELECT id FROM raw_content WHERE url = ?", (content.url,))
+        if cursor.fetchone():
+            conn.close()
+            return # Skip duplicate
+            
+    cursor.execute(
+        "INSERT INTO raw_content (id, source_id, content, url, timestamp, status, analysis_summary, risk_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        (content.id, content.source_id, content.content, content.url, content.timestamp, content.status, content.analysis_summary, content.risk_score)
+    )
+    conn.commit()
+    conn.close()
 
 async def approve_content(content_id: str):
-    for content in RAW_CONTENT:
-        if content.id == content_id:
-            content.status = "approved"
-            break
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE raw_content SET status = 'approved' WHERE id = ?", (content_id,))
+    conn.commit()
+    conn.close()
 
 async def discard_content(content_id: str):
-    for content in RAW_CONTENT:
-        if content.id == content_id:
-            content.status = "discarded"
-            break
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE raw_content SET status = 'discarded' WHERE id = ?", (content_id,))
+    conn.commit()
+    conn.close()
 
 from .discovery_agent import discover_new_sources
 
-# In-memory topics for demo
+# In-memory topics for demo (could also be moved to DB, but sticking to plan for now)
 MONITORED_TOPICS = []
 
 async def add_topic(topic: str):
@@ -63,23 +125,14 @@ async def run_pipeline():
         print(f"Discovering content for topics: {MONITORED_TOPICS}")
         discovered_items = await discover_new_sources(MONITORED_TOPICS)
         print(f"DEBUG: Discovered {len(discovered_items)} items.")
+        
         for item in discovered_items:
-             # Create a temporary source for the discovered item if needed, 
-             # or just process it directly as a "Discovered" source type.
-             # For MVP, we'll treat them as direct items to process.
              try:
-                if any(c.url == item['url'] for c in RAW_CONTENT):
-                    continue
-
-                # Process Discovered Item
-                # We might need to fetch the full content if the snippet isn't enough,
-                # but often the snippet + title is enough for initial triage.
-                # Let's try to fetch the full page if possible, else use snippet.
+                # Check duplicates is handled in add_raw_content, but we can check here too if we want to avoid analysis cost
+                # For now, let's just process
                 
                 content_text = item['snippet']
-                # Optional: Deep fetch
-                # fetched = await fetch_from_url(item['url'])
-                # if fetched: content_text = fetched
+                # Optional: Deep fetch logic here
                 
                 analysis = await analyze_text(content_text[:2000])
                 
@@ -97,20 +150,19 @@ async def run_pipeline():
                     analysis_summary=analysis.summary,
                     risk_score=analysis.radicalization_score
                 )
-                RAW_CONTENT.append(raw)
+                
+                await add_raw_content(raw)
                 new_content_count += 1
              except Exception as e:
                  print(f"Error processing discovered item {item['url']}: {e}")
 
     # 1. Fetch from Manual Sources
-    for source in SOURCES:
+    sources = await get_sources()
+    for source in sources:
         try:
             fetched_items = await fetch_from_source(source)
             
             for item in fetched_items:
-                if any(c.url == item['url'] for c in RAW_CONTENT):
-                    continue
-                
                 analysis = await analyze_text(item['content'][:2000])
                 
                 status = "pending"
@@ -127,7 +179,8 @@ async def run_pipeline():
                     analysis_summary=analysis.summary,
                     risk_score=analysis.radicalization_score
                 )
-                RAW_CONTENT.append(raw)
+                
+                await add_raw_content(raw)
                 new_content_count += 1
                 
         except Exception as e:
@@ -160,8 +213,7 @@ async def fetch_from_source(source: Source) -> List[dict]:
             print(f"Fetch error: {e}")
             
     elif source.type == 'rss':
-        # Mock RSS logic for now (or use feedparser if installed)
-        # For demo, we'll just treat it as a direct link or return a mock item
+        # Mock RSS logic for now
         items.append({
             "content": f"Mock RSS content from {source.name}. Discussing controversial topics...",
             "url": source.url + "/item1"
@@ -169,7 +221,7 @@ async def fetch_from_source(source: Source) -> List[dict]:
         
     return items
 
-from .trend_monitor import add_trend
+from .trend_monitor import add_trend as add_trend_db
 from .models import DisinformationTrend
 
 async def discover_trends():
@@ -179,20 +231,20 @@ async def discover_trends():
     print("Discovering real-time trends...")
     # Broad keywords to find trending harmful content
     discovery_keywords = [
-        "latest conspiracy theories 2024",
-        "viral misinformation trends",
-        "trending harmful social media challenges",
-        "popular radicalization narratives"
+        "incel ideology manifesto",
+        "white supremacy recruitment tactics",
+        "pro-ana thinspo communities",
+        "violent extremism accelerationism",
+        "transphobic hate speech trends",
+        "self-harm encouragement groups",
+        "radicalization pipeline youtube",
+        "neo-nazi propaganda social media"
     ]
     
     discovered = await discover_new_sources(discovery_keywords)
     
     new_trends_count = 0
     for item in discovered:
-        # Simple heuristic: If we found it via these keywords, treat it as a potential trend.
-        # In a real system, we'd use AI to cluster these into cohesive trends.
-        # For MVP, we'll create a trend entry for each distinct high-quality result.
-        
         # Check if trend already exists (by topic/title) - simplified check
         # In production, use vector similarity or DB check.
         
@@ -205,7 +257,7 @@ async def discover_trends():
             counter_arguments=[],
             sources=[item['url']]
         )
-        await add_trend(trend)
+        await add_trend_db(trend)
         new_trends_count += 1
         
     return {"status": "success", "new_trends": new_trends_count}
@@ -232,7 +284,8 @@ async def add_trend_to_queue(trend_id: str):
         analysis_summary=f"Trend Severity: {trend.severity}",
         risk_score=0.8 if trend.severity == "High" else 0.5
     )
-    RAW_CONTENT.append(raw)
+    
+    await add_raw_content(raw)
     return raw
 
 async def train_approved_batch():
@@ -242,8 +295,25 @@ async def train_approved_batch():
     """
     from .vector_store import add_documents, get_collection_stats
     
-    # Get all approved items
-    approved_items = [c for c in RAW_CONTENT if c.status == "approved"]
+    # Get all approved items from DB
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM raw_content WHERE status = 'approved'")
+    rows = cursor.fetchall()
+    conn.close()
+    
+    approved_items = []
+    for row in rows:
+        approved_items.append(RawContent(
+            id=row['id'],
+            source_id=row['source_id'],
+            content=row['content'],
+            url=row['url'],
+            timestamp=row['timestamp'],
+            status=row['status'],
+            analysis_summary=row['analysis_summary'],
+            risk_score=row['risk_score']
+        ))
     
     if not approved_items:
         return {"status": "success", "items_trained": 0, "message": "No approved items to train"}
@@ -267,9 +337,13 @@ async def train_approved_batch():
     # Batch ingest
     add_documents(documents, metadatas, ids)
     
-    # Mark as trained
+    # Mark as trained in DB
+    conn = get_db_connection()
+    cursor = conn.cursor()
     for content in approved_items:
-        content.status = "trained"
+        cursor.execute("UPDATE raw_content SET status = 'trained' WHERE id = ?", (content.id,))
+    conn.commit()
+    conn.close()
     
     # Get updated stats
     stats = get_collection_stats()

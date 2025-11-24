@@ -5,8 +5,8 @@ from .models import AnalysisRequest, AnalysisResponse, ArgumentRequest, Argument
 from .ai_service import analyze_text, generate_argument
 from .trend_monitor import get_active_trends, add_trend
 from .rag_service import augment_analysis_with_context, chat_with_data, retrieve_context
-from .database import init_db
-from .profiles import router as profiles_router
+from .database import init_db, get_db_connection
+from .subjects import router as subjects_router
 from .scanner_agent import router as scanner_router
 from .scraper_service import router as scraper_router_service
 from .ingest_service import ingest_all_data
@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="RECAPTURE API", description="API for reversing radicalization in young people", lifespan=lifespan)
 
-app.include_router(profiles_router, prefix="/api")
+app.include_router(subjects_router, prefix="/api")
 app.include_router(scanner_router, prefix="/api")
 app.include_router(scraper_router_service, prefix="/api")
 
@@ -58,16 +58,16 @@ async def analyze_content(request: AnalysisRequest):
         result_dict = result.dict()
         result_dict = await augment_analysis_with_context(request.text, result_dict)
         
-        # 3. Log to Profile if provided
-        if request.profile_id:
+        # 3. Log to Subject if provided
+        if request.profile_id: # Keeping request field name for now, but treating as subject_id
             from .models import ContentLog
-            from .profiles import add_content_log
+            from .subjects import add_content_log
             import uuid
             from datetime import datetime
             
             log = ContentLog(
                 id=str(uuid.uuid4()),
-                profile_id=request.profile_id,
+                subject_id=request.profile_id,
                 content=request.text,
                 source_url=request.source_url,
                 timestamp=datetime.now().isoformat(),
@@ -93,9 +93,7 @@ from .pipeline_service import discover_trends
 @app.post("/trends/refresh")
 async def refresh_trends():
     return await discover_trends()
-@app.post("/trends/refresh")
-async def refresh_trends():
-    return await discover_trends()
+
 
 from .pipeline_service import add_trend_to_queue
 
@@ -106,16 +104,17 @@ async def queue_trend(trend_id: str):
         return {"status": "queued"}
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 class ArgumentRequest(BaseModel):
     analysis_id: Optional[str] = None
     context: Optional[str] = None
-    profile_id: Optional[str] = None
+    profile_id: Optional[str] = None # Treating as subject_id
 
 @app.post("/api/generate-argument", response_model=ArgumentResponse)
 async def create_argument(request: ArgumentRequest):
     try:
-        # 1. Fetch Profile Data
-        profile_data = None
+        # 1. Fetch Subject Data
+        subject_data = None
         history_data = []
         authorities_data = []
         
@@ -123,11 +122,11 @@ async def create_argument(request: ArgumentRequest):
             conn = get_db_connection()
             cursor = conn.cursor()
             
-            # Fetch Profile
-            cursor.execute("SELECT * FROM profiles WHERE id = ?", (request.profile_id,))
+            # Fetch Subject
+            cursor.execute("SELECT * FROM subjects WHERE id = ?", (request.profile_id,))
             row = cursor.fetchone()
             if row:
-                profile_data = {
+                subject_data = {
                     "name": row['name'],
                     "age": row['age'],
                     "risk_level": row['risk_level'],
@@ -135,7 +134,7 @@ async def create_argument(request: ArgumentRequest):
                 }
             
             # Fetch Recent History
-            cursor.execute("SELECT * FROM content_logs WHERE profile_id = ? ORDER BY timestamp DESC LIMIT 5", (request.profile_id,))
+            cursor.execute("SELECT * FROM content_logs WHERE subject_id = ? ORDER BY timestamp DESC LIMIT 5", (request.profile_id,))
             log_rows = cursor.fetchall()
             for log in log_rows:
                 history_data.append({
@@ -144,7 +143,7 @@ async def create_argument(request: ArgumentRequest):
                 })
                 
             # Fetch Authorities
-            cursor.execute("SELECT * FROM authorities WHERE profile_id = ?", (request.profile_id,))
+            cursor.execute("SELECT * FROM authorities WHERE subject_id = ?", (request.profile_id,))
             auth_rows = cursor.fetchall()
             for auth in auth_rows:
                 authorities_data.append({
@@ -161,7 +160,7 @@ async def create_argument(request: ArgumentRequest):
         # 3. Generate Argument
         result = await generate_argument(
             topic=request.context,
-            profile=profile_data,
+            profile=subject_data, # Passing subject data as 'profile' to keep AI service compatible for now
             history=history_data,
             authorities=authorities_data,
             rag_context=rag_context
@@ -234,3 +233,50 @@ async def list_topics():
 async def create_topic(topic: str):
     await add_topic(topic)
     return {"status": "added"}
+
+# --- Deep Listening Endpoints ---
+from .listening_service import listening_service
+from .models import ListeningResult
+
+@app.post("/api/listening/start")
+async def start_listening():
+    await listening_service.start_listening()
+    return {"status": "started"}
+
+@app.post("/api/listening/stop")
+async def stop_listening():
+    await listening_service.stop_listening()
+    return {"status": "stopped"}
+
+@app.get("/api/listening/status")
+async def get_listening_status():
+    return {"running": listening_service.is_running()}
+
+@app.get("/api/listening/feed", response_model=List[ListeningResult])
+async def get_listening_feed():
+    return listening_service.get_latest_results()
+
+@app.post("/api/listening/promote")
+async def promote_listening_result(result: ListeningResult):
+    """
+    Promotes a listening result to the main pipeline for training.
+    """
+    from .pipeline_service import add_raw_content
+    from .models import RawContent
+    import uuid
+    from datetime import datetime
+    
+    # Create RawContent from ListeningResult
+    content = RawContent(
+        id=str(uuid.uuid4()),
+        source_id="listening_service", # specific source ID for promoted content
+        content=f"[{result.source_platform}] {result.content}",
+        url=result.url,
+        timestamp=datetime.now().isoformat(),
+        status="pending",
+        risk_score=0.8 if result.severity in ["High", "Critical"] else 0.5,
+        analysis_summary=f"Promoted from Listening Feed. Matched Trend: {result.matched_trend_topic}"
+    )
+    
+    await add_raw_content(content)
+    return {"status": "promoted", "id": content.id}

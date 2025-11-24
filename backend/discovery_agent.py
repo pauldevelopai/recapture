@@ -1,30 +1,44 @@
-from duckduckgo_search import DDGS
+import os
+import requests
 from typing import List
-import asyncio
+
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+TAVILY_API_URL = "https://api.tavily.com/search"
 
 async def search_for_topic(topic: str, max_results: int = 5) -> List[dict]:
     """
-    Searches DuckDuckGo for a given topic and returns a list of results.
+    Searches Tavily for a given topic and returns a list of results.
     """
-    print(f"Discovery Agent: Searching for '{topic}'...")
+    print(f"Discovery Agent: Searching Tavily for '{topic}'...")
     results = []
+    
+    if not TAVILY_API_KEY:
+        print("ERROR: TAVILY_API_KEY not set. Skipping search.")
+        return []
+
     try:
-        # DDGS is synchronous, so we run it in a thread if needed, 
-        # but for simple usage in this async function we can call it directly 
-        # or wrap in to_thread if it blocks too long.
-        # Given the low volume, direct call is acceptable for MVP.
-        with DDGS() as ddgs:
-            # search for news or general results using 'html' backend to avoid strict rate limits
-            search_results = ddgs.text(topic, max_results=max_results, backend="html")
-            
-            for r in search_results:
-                print(f"DEBUG: Found result: {r.get('title')}")
-                results.append({
-                    "title": r.get('title'),
-                    "url": r.get('href'),
-                    "snippet": r.get('body')
-                })
-            print(f"DEBUG: Total results found: {len(results)}")
+        payload = {
+            "api_key": TAVILY_API_KEY,
+            "query": topic,
+            "search_depth": "basic", # or "advanced"
+            "include_answer": False,
+            "include_images": False,
+            "include_raw_content": False,
+            "max_results": max_results,
+        }
+        
+        response = requests.post(TAVILY_API_URL, json=payload, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        
+        for r in data.get("results", []):
+            print(f"DEBUG: Found result: {r.get('title')}")
+            results.append({
+                "title": r.get('title'),
+                "url": r.get('url'),
+                "snippet": r.get('content') # Tavily uses 'content' for the snippet
+            })
+        print(f"DEBUG: Total results found: {len(results)}")
                 
     except Exception as e:
         print(f"Discovery Agent Error: {e}")

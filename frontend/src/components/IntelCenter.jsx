@@ -4,6 +4,8 @@ import {
     Database, Plus, Trash2, Play, Check, X, RefreshCw, Rss, Globe,
     AlertTriangle, Search, Activity, Smartphone, Clock, ShieldAlert, LayoutDashboard
 } from 'lucide-react';
+import ListeningFeed from './ListeningFeed';
+
 
 export default function IntelCenter() {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -20,8 +22,8 @@ export default function IntelCenter() {
     const [newTopic, setNewTopic] = useState('');
 
     // --- ActivityMonitor State ---
-    const [profiles, setProfiles] = useState([]);
-    const [selectedProfile, setSelectedProfile] = useState('');
+    const [subjects, setSubjects] = useState([]);
+    const [selectedSubject, setSelectedSubject] = useState('');
     const [logs, setLogs] = useState([]);
     const [simulatedContent, setSimulatedContent] = useState('');
     const [isScanning, setIsScanning] = useState(false);
@@ -35,31 +37,31 @@ export default function IntelCenter() {
         fetchSources();
         fetchTopics();
         fetchContent();
-        fetchProfiles();
+        fetchSubjects();
         fetchTrends();
         fetchModelStats();
     }, []);
 
     useEffect(() => {
-        if (selectedProfile) {
-            fetchLogs(selectedProfile);
-            const interval = setInterval(() => fetchLogs(selectedProfile), 3000);
+        if (selectedSubject) {
+            fetchLogs(selectedSubject);
+            const interval = setInterval(() => fetchLogs(selectedSubject), 3000);
             return () => clearInterval(interval);
         }
-    }, [selectedProfile]);
+    }, [selectedSubject]);
 
     // --- API Calls ---
     const fetchSources = async () => { try { setSources((await axios.get('http://127.0.0.1:8000/sources')).data); } catch (e) { console.error(e); } };
     const fetchTopics = async () => { try { setTopics((await axios.get('http://127.0.0.1:8000/topics')).data); } catch (e) { console.error(e); } };
     const fetchContent = async () => { try { setContent((await axios.get('http://127.0.0.1:8000/pipeline/content')).data); } catch (e) { console.error(e); } };
-    const fetchProfiles = async () => {
+    const fetchSubjects = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/profiles');
-            setProfiles(res.data);
-            if (res.data.length > 0 && !selectedProfile) setSelectedProfile(res.data[0].id);
+            const res = await axios.get('http://127.0.0.1:8000/api/subjects');
+            setSubjects(res.data);
+            if (res.data.length > 0 && !selectedSubject) setSelectedSubject(res.data[0].id);
         } catch (e) { console.error(e); }
     };
-    const fetchLogs = async (pid) => { try { setLogs((await axios.get(`http://127.0.0.1:8000/api/profiles/${pid}/logs`)).data); } catch (e) { console.error(e); } };
+    const fetchLogs = async (sid) => { try { setLogs((await axios.get(`http://127.0.0.1:8000/api/subjects/${sid}/logs`)).data); } catch (e) { console.error(e); } };
     const fetchTrends = async () => { try { setTrends((await axios.get('http://127.0.0.1:8000/trends')).data); } catch (e) { console.error(e); } finally { setLoadingTrends(false); } };
     const fetchModelStats = async () => { try { setModelStats((await axios.get('http://127.0.0.1:8000/pipeline/stats')).data); } catch (e) { console.error(e); } };
 
@@ -104,13 +106,13 @@ export default function IntelCenter() {
     };
 
     const handleSimulateIngestion = async () => {
-        if (!simulatedContent.trim() || !selectedProfile) return;
+        if (!simulatedContent.trim() || !selectedSubject) return;
         setIsScanning(true);
         try {
             await axios.post('http://127.0.0.1:8000/api/scanner/ingest', {
-                profile_id: selectedProfile, content: simulatedContent, source_url: "Simulated Device Input", timestamp: new Date().toISOString()
+                profile_id: selectedSubject, content: simulatedContent, source_url: "Simulated Device Input", timestamp: new Date().toISOString()
             });
-            setSimulatedContent(''); fetchLogs(selectedProfile);
+            setSimulatedContent(''); fetchLogs(selectedSubject);
         } catch (e) { console.error(e); } finally { setIsScanning(false); }
     };
 
@@ -169,7 +171,7 @@ export default function IntelCenter() {
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                        <h2>Active Threats</h2>
+                        <h2>Threat Monitor</h2>
                         <button
                             className="btn btn-primary"
                             onClick={async () => {
@@ -186,43 +188,53 @@ export default function IntelCenter() {
                         </button>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
-                        {(trends || []).map(trend => (
-                            <div key={trend.id} className="card" style={{ borderTop: `4px solid ${trend.risk_level === 'High' ? 'var(--danger)' : 'var(--primary)'}` }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                                    <h3 style={{ margin: 0 }}>{trend.topic}</h3>
-                                    <span style={{ background: trend.risk_level === 'High' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)', color: trend.risk_level === 'High' ? 'var(--danger)' : 'var(--primary)', padding: '0.25rem 0.75rem', borderRadius: '1rem', fontSize: '0.8rem', fontWeight: 'bold' }}>
-                                        {(trend.risk_level || 'UNKNOWN').toUpperCase()}
-                                    </span>
-                                </div>
-                                <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)' }}>{trend.description}</p>
-                                {trend.sources && trend.sources.length > 0 && (
-                                    <div style={{ fontSize: '0.85rem', borderTop: '1px solid var(--border)', paddingTop: '0.5rem' }}>
-                                        <strong>Sources:</strong>
-                                        <ul style={{ margin: '0.5rem 0 0 1.2rem', padding: 0, color: 'var(--text-muted)' }}>
-                                            {trend.sources.map((s, i) => (
-                                                <li key={i}><a href={s} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>{s.substring(0, 40)}...</a></li>
-                                            ))}
-                                        </ul>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        {/* Left Column: Active Trends List */}
+                        <div className="lg:col-span-2 space-y-6">
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                                {(trends || []).map(trend => (
+                                    <div key={trend.id} className="card" style={{ borderTop: `4px solid ${trend.risk_level === 'High' ? 'var(--danger)' : 'var(--primary)'}` }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                                            <h3 style={{ margin: 0 }}>{trend.topic}</h3>
+                                            <span style={{ background: trend.risk_level === 'High' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)', color: trend.risk_level === 'High' ? 'var(--danger)' : 'var(--primary)', padding: '0.25rem 0.75rem', borderRadius: '1rem', fontSize: '0.8rem', fontWeight: 'bold' }}>
+                                                {(trend.risk_level || 'UNKNOWN').toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)' }}>{trend.description}</p>
+                                        {trend.sources && trend.sources.length > 0 && (
+                                            <div style={{ fontSize: '0.85rem', borderTop: '1px solid var(--border)', paddingTop: '0.5rem' }}>
+                                                <strong>Sources:</strong>
+                                                <ul style={{ margin: '0.5rem 0 0 1.2rem', padding: 0, color: 'var(--text-muted)' }}>
+                                                    {trend.sources.map((s, i) => (
+                                                        <li key={i}><a href={s} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>{s.substring(0, 40)}...</a></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                        <button
+                                            className="btn"
+                                            style={{ marginTop: '1rem', width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid var(--border)' }}
+                                            onClick={async () => {
+                                                try {
+                                                    await axios.post(`http://127.0.0.1:8000/trends/${trend.id}/queue`);
+                                                    alert("Added to Training Queue!");
+                                                    fetchContent(); // Refresh queue
+                                                } catch (e) { alert("Failed to add to queue"); }
+                                            }}
+                                        >
+                                            <Plus size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
+                                            Add to Training Queue
+                                        </button>
                                     </div>
-                                )}
-                                <button
-                                    className="btn"
-                                    style={{ marginTop: '1rem', width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid var(--border)' }}
-                                    onClick={async () => {
-                                        try {
-                                            await axios.post(`http://127.0.0.1:8000/trends/${trend.id}/queue`);
-                                            alert("Added to Training Queue!");
-                                            fetchContent(); // Refresh queue
-                                        } catch (e) { alert("Failed to add to queue"); }
-                                    }}
-                                >
-                                    <Plus size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                                    Add to Training Queue
-                                </button>
+                                ))}
+                                {(trends || []).length === 0 && <p className="text-muted">No active threats detected.</p>}
                             </div>
-                        ))}
-                        {(trends || []).length === 0 && <p className="text-muted">No active threats detected.</p>}
+                        </div>
+
+                        {/* Right Column: Live Listening Feed */}
+                        <div className="lg:col-span-1">
+                            <ListeningFeed />
+                        </div>
                     </div>
 
                     {/* Training Queue Section */}
@@ -303,8 +315,8 @@ export default function IntelCenter() {
             {activeTab === 'activity' && (
                 <div className="activity-tab">
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
-                        <select value={selectedProfile} onChange={(e) => setSelectedProfile(e.target.value)} style={{ padding: '0.75rem', borderRadius: 'var(--radius)', minWidth: '200px' }}>
-                            {profiles.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+                        <select value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)} style={{ padding: '0.75rem', borderRadius: 'var(--radius)', minWidth: '200px' }}>
+                            {subjects.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
                         </select>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
