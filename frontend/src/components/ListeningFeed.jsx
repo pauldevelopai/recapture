@@ -57,15 +57,42 @@ const ListeningFeed = () => {
         try {
             const response = await fetch('http://localhost:8000/api/listening/feed');
             const data = await response.json();
-            setFeed(data);
 
-            // Update stats
-            const threatCount = data.filter(item => item.matched_trend_id).length;
-            setStats({ total: data.length, threats: threatCount });
+            setFeed(prevFeed => {
+                // Create a map of existing IDs for fast lookup
+                const existingIds = new Set(prevFeed.map(item => item.id));
+
+                // Filter out items that are already in the feed
+                const newItems = data.filter(item => !existingIds.has(item.id));
+
+                if (newItems.length === 0) return prevFeed;
+
+                // Combine and sort by timestamp (newest first)
+                const combined = [...newItems, ...prevFeed].sort((a, b) =>
+                    new Date(b.timestamp) - new Date(a.timestamp)
+                );
+
+                return combined;
+            });
+
+            // Update stats based on the latest fetch (total in DB vs total in view is tricky, 
+            // but let's show stats for what's in view or just use the latest fetch stats if backend provided them.
+            // For now, let's calculate stats based on the *merged* feed in the next render, 
+            // or just update it here based on the data we just fetched if we want "latest scan" stats.
+            // Actually, let's update stats based on the *new* combined list. 
+            // Since setFeed is async, we can't do it right here easily without repeating logic.
+            // Let's just update stats based on the incoming batch for "Scanned" count, 
+            // or better, use a useEffect on 'feed' to update stats.
         } catch (error) {
             console.error("Failed to fetch feed:", error);
         }
     };
+
+    // Update stats whenever feed changes
+    useEffect(() => {
+        const threatCount = feed.filter(item => item.matched_trend_id).length;
+        setStats({ total: feed.length, threats: threatCount });
+    }, [feed]);
 
     const getSeverityColor = (severity) => {
         switch (severity?.toLowerCase()) {

@@ -3,9 +3,7 @@
 > vite
 
 
-  VITE v7.2.4  ready in 188 ms
+  VITE v7.2.4  ready in 190 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-11:47:58 PM [vite] (client) hmr update /src/components/ListeningFeed.jsx
-11:48:41 PM [vite] (client) hmr update /src/components/ListeningFeed.jsx

@@ -114,7 +114,7 @@ class ListeningService:
                     return trend
         return None
 
-    def get_latest_results(self, limit: int = 50) -> List[ListeningResult]:
+    def get_latest_results(self, limit: int = 100) -> List[ListeningResult]:
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM listening_results ORDER BY timestamp DESC LIMIT ?", (limit,))
