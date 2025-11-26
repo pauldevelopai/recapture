@@ -9,6 +9,7 @@ from .database import init_db, get_db_connection
 from .subjects import router as subjects_router
 from .scanner_agent import router as scanner_router
 from .scraper_service import router as scraper_router_service
+from .clone_router import router as clone_router
 from .ingest_service import ingest_all_data
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -27,6 +28,7 @@ app = FastAPI(title="RECAPTURE API", description="API for reversing radicalizati
 app.include_router(subjects_router, prefix="/api")
 app.include_router(scanner_router, prefix="/api")
 app.include_router(scraper_router_service, prefix="/api")
+app.include_router(clone_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,

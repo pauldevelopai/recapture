@@ -87,3 +87,70 @@ class ListeningResult(BaseModel):
     severity: str = "Low"
     url: Optional[str] = None
 
+# Social Media Integration Models
+class SocialMediaFeed(BaseModel):
+    id: Optional[str] = None
+    subject_id: Optional[str] = None  # Set from URL path
+    platform: str  # e.g., "Twitter", "Instagram", "TikTok", "Facebook"
+    username: Optional[str] = None
+    profile_url: Optional[str] = None
+    status: Optional[str] = "active"  # "active", "error", "inactive"
+    last_scraped: Optional[str] = None
+    error_message: Optional[str] = None
+
+class SubjectSocialPost(BaseModel):
+    id: Optional[str] = None
+    subject_id: str
+    feed_id: str
+    content: str
+    posted_at: Optional[str] = None
+    platform: str
+    url: Optional[str] = None
+    engagement_metrics: Optional[dict] = None  # likes, shares, comments
+    scraped_at: Optional[str] = None
+
+class RiskProfileAnalysis(BaseModel):
+    id: Optional[str] = None
+    subject_id: str
+    analysis_date: str
+    overall_risk_score: float = 0.0
+    risk_factors: List[dict] = []  # [{"factor": "...", "severity": "...", "evidence": "..."}]
+    detected_themes: List[str] = []
+    language_patterns: dict = {}  # {"tone": "...", "vocabulary_level": "...", "sentiment_trend": "..."}
+    post_count: int = 0
+
+# Digital Clone Models
+class DigitalClone(BaseModel):
+    id: Optional[str] = None
+    subject_id: str
+    personality_model: dict = {}  # {"traits": [...], "values": [...], "communication_style": "..."}
+    writing_style: dict = {}  # {"vocabulary": [...], "sentence_structure": "...", "tone": "..."}
+    interests: List[str] = []
+    beliefs: dict = {}  # {"topic": "belief/opinion"}
+    last_trained: Optional[str] = None
+    training_post_count: int = 0
+    status: str = "untrained"  # untrained, training, ready, error
+
+class CloneMessage(BaseModel):
+    role: str  # "user" or "clone"
+    content: str
+    timestamp: str
+
+class CloneConversation(BaseModel):
+    id: Optional[str] = None
+    clone_id: str
+    conversation: List[CloneMessage] = []
+    effectiveness_score: Optional[float] = None
+    timestamp: str
+    notes: Optional[str] = None
+
+class CloneTestRequest(BaseModel):
+    clone_id: str
+    message: str
+
+class CloneTestResponse(BaseModel):
+    clone_response: str
+    effectiveness_score: float
+    suggestions: List[str] = []
+    conversation_id: str
+

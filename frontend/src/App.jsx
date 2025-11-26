@@ -3,6 +3,8 @@ import Dashboard from './components/Dashboard';
 import Scanner from './components/Scanner';
 import ArgumentBuilder from './components/ArgumentBuilder';
 import SubjectsView from './components/SubjectsView';
+import SubjectDetail from './components/SubjectDetail';
+import CloneChat from './components/CloneChat';
 import AuthoritiesView from './components/AuthoritiesView';
 import ChatInterface from './components/ChatInterface';
 import IntelCenter from './components/IntelCenter';
@@ -46,6 +48,8 @@ function App() {
         <main className="main-content"> {/* Changed class name */}
           <Routes>
             <Route path="/" element={<SubjectsView />} />
+            <Route path="/subjects/:id" element={<SubjectDetail />} />
+            <Route path="/subjects/:id/clone" element={<CloneChat />} />
             <Route path="/intel" element={<IntelCenter />} />
             <Route path="/authorities" element={<AuthoritiesView />} />
             <Route path="/arguments" element={<ArgumentBuilder />} />
