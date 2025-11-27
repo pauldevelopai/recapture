@@ -17,7 +17,7 @@ export default function Scanner() {
 
     const fetchProfiles = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/profiles');
+            const res = await axios.get('http://127.0.0.1:8000/api/subjects');
             setProfiles(res.data);
         } catch (err) {
             console.error("Error fetching profiles:", err);

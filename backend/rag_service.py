@@ -3,29 +3,48 @@ from .models import DisinformationTrend
 from .vector_store import query_documents
 from .ai_service import client
 
-async def retrieve_context(query: str) -> str:
+async def retrieve_context_with_sources(query: str) -> dict:
     """
     Retrieves relevant documents from the vector store.
-    Returns a formatted string of context.
+    Returns a dict with formatted context string and raw sources.
     """
     results = query_documents(query, n_results=3)
     
     if not results:
-        return ""
+        return {"context_str": "", "sources": []}
         
     context_str = "\n\n".join([
         f"--- Document ({r['metadata']['type']}) ---\n{r['content']}" 
         for r in results
     ])
     
-    return context_str
+    sources = []
+    for r in results:
+        source_info = {
+            "type": r['metadata'].get('type', 'unknown'),
+            "content": r['content'],
+            "metadata": r['metadata']
+        }
+        sources.append(source_info)
+    
+    return {"context_str": context_str, "sources": sources}
 
-async def chat_with_data(query: str) -> str:
+async def retrieve_context(query: str) -> str:
+    """
+    Wrapper for backward compatibility. Returns just the context string.
+    """
+    result = await retrieve_context_with_sources(query)
+    return result["context_str"]
+
+async def chat_with_data(query: str) -> dict:
     """
     Answers a user query using RAG.
+    Returns: { "response": str, "sources": list }
     """
     # 1. Retrieve Context
-    context = await retrieve_context(query)
+    retrieval_result = await retrieve_context_with_sources(query)
+    context = retrieval_result["context_str"]
+    sources = retrieval_result["sources"]
     
     # 2. Construct Prompt
     system_prompt = """You are a helpful assistant for the RECAPTURE application. 
@@ -53,9 +72,15 @@ async def chat_with_data(query: str) -> str:
                 {"role": "user", "content": user_prompt}
             ]
         )
-        return response.choices[0].message.content
+        return {
+            "response": response.choices[0].message.content,
+            "sources": sources
+        }
     except Exception as e:
-        return f"Error generating response: {str(e)}"
+        return {
+            "response": f"Error generating response: {str(e)}",
+            "sources": []
+        }
 
 async def augment_analysis_with_context(text: str, base_analysis: dict) -> dict:
     """

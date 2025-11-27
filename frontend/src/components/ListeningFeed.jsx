@@ -5,6 +5,8 @@ const ListeningFeed = () => {
     const [isListening, setIsListening] = useState(false);
     const [feed, setFeed] = useState([]);
     const [stats, setStats] = useState({ total: 0, threats: 0 });
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
     const feedEndRef = useRef(null);
 
     // Poll for updates when listening
@@ -159,7 +161,7 @@ const ListeningFeed = () => {
                         <p>No activity detected. Start listening to monitor channels.</p>
                     </div>
                 ) : (
-                    feed.map((item) => (
+                    feed.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item) => (
                         <div
                             key={item.id}
                             className={`p-4 rounded-lg border transition-all duration-300 ${item.matched_trend_id
@@ -219,6 +221,27 @@ const ListeningFeed = () => {
                             </div>
                         </div>
                     ))
+                )}
+                {feed.length > itemsPerPage && (
+                    <div className="flex justify-center items-center gap-4 mt-4 pt-4 border-t border-gray-800">
+                        <button
+                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                            className="px-3 py-1 text-sm bg-gray-800 text-gray-300 rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Previous
+                        </button>
+                        <span className="text-sm text-gray-400">
+                            Page {currentPage} of {Math.ceil(feed.length / itemsPerPage)}
+                        </span>
+                        <button
+                            onClick={() => setCurrentPage(p => Math.min(Math.ceil(feed.length / itemsPerPage), p + 1))}
+                            disabled={currentPage >= Math.ceil(feed.length / itemsPerPage)}
+                            className="px-3 py-1 text-sm bg-gray-800 text-gray-300 rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Next
+                        </button>
+                    </div>
                 )}
                 <div ref={feedEndRef} />
             </div>

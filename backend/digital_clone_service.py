@@ -165,7 +165,57 @@ async def train_clone(subject_id: str) -> DigitalClone:
     post_rows = cursor.fetchall()
     
     if not post_rows:
-        raise Exception("No social media posts available for this subject. Cannot train clone.")
+        # Create a pending clone instead of raising exception
+        # Check if clone already exists
+        cursor.execute(
+            "SELECT id FROM digital_clones WHERE subject_id = ?",
+            (subject_id,)
+        )
+        existing = cursor.fetchone()
+        
+        if existing:
+            return DigitalClone(
+                id=existing['id'],
+                subject_id=subject_id,
+                personality_model=json.loads(existing['personality_model']) if existing['personality_model'] else {},
+                writing_style=json.loads(existing['writing_style']) if existing['writing_style'] else {},
+                interests=json.loads(existing['interests']) if existing['interests'] else [],
+                beliefs=json.loads(existing['beliefs']) if existing['beliefs'] else {},
+                last_trained=existing['last_trained'],
+                training_post_count=existing['training_post_count'],
+                status=existing['status']
+            )
+            
+        clone_id = str(uuid.uuid4())
+        cursor.execute(
+            """INSERT INTO digital_clones
+            (id, subject_id, personality_model, writing_style, interests, beliefs, last_trained, training_post_count, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending')""",
+            (
+                clone_id,
+                subject_id,
+                json.dumps({}),
+                json.dumps({}),
+                json.dumps([]),
+                json.dumps({}),
+                None,
+                0
+            )
+        )
+        conn.commit()
+        conn.close()
+        
+        return DigitalClone(
+            id=clone_id,
+            subject_id=subject_id,
+            personality_model={},
+            writing_style={},
+            interests=[],
+            beliefs={},
+            last_trained=None,
+            training_post_count=0,
+            status='pending'
+        )
     
     # Convert to SubjectSocialPost objects
     posts = []
@@ -275,6 +325,31 @@ async def get_or_create_clone(subject_id: str) -> DigitalClone:
     else:
         # Create new clone
         return await train_clone(subject_id)
+
+
+async def get_all_clones() -> List[DigitalClone]:
+    """Get all digital clones"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM digital_clones")
+    rows = cursor.fetchall()
+    conn.close()
+    
+    clones = []
+    for row in rows:
+        clones.append(DigitalClone(
+            id=row['id'],
+            subject_id=row['subject_id'],
+            personality_model=json.loads(row['personality_model']) if row['personality_model'] else {},
+            writing_style=json.loads(row['writing_style']) if row['writing_style'] else {},
+            interests=json.loads(row['interests']) if row['interests'] else [],
+            beliefs=json.loads(row['beliefs']) if row['beliefs'] else {},
+            last_trained=row['last_trained'],
+            training_post_count=row['training_post_count'],
+            status=row['status']
+        ))
+    return clones
 
 
 async def generate_clone_response(clone: DigitalClone, message: str, conversation_history: List[CloneMessage] = None) -> str:

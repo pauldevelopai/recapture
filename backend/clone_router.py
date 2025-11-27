@@ -5,10 +5,23 @@ from .digital_clone_service import (
     get_or_create_clone,
     train_clone,
     chat_with_clone,
-    get_clone_conversations
+    get_or_create_clone,
+    train_clone,
+    chat_with_clone,
+    get_clone_conversations,
+    get_all_clones
 )
 
 router = APIRouter()
+
+
+@router.get("/clones", response_model=List[DigitalClone])
+async def list_clones():
+    """Get all digital clones"""
+    try:
+        return await get_all_clones()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/clones/{subject_id}", response_model=DigitalClone)

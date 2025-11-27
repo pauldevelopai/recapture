@@ -154,3 +154,24 @@ class CloneTestResponse(BaseModel):
     suggestions: List[str] = []
     conversation_id: str
 
+# Bot Farm & Campaign Models
+class BotFarm(BaseModel):
+    id: str
+    name: str
+    origin_country: str
+    network_size: int # Number of bots
+    active_campaigns: List[str] = []
+    status: str = "Active" # Active, Dormant, Suspended
+    primary_tactics: List[str] = [] # e.g., "Hashtag Flooding", "Reply Guy", "Fake News"
+
+class DisinformationCampaign(BaseModel):
+    id: str
+    name: str
+    target_demographic: str
+    narrative_goal: str
+    active_platforms: List[str]
+    bot_farm_id: Optional[str] = None
+    reach_estimate: int
+    status: str = "Active"
+    detected_at: str
+

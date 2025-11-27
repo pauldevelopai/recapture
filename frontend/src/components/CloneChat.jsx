@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, Send, User, Bot, RefreshCw, TrendingUp, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Send, User, Bot, RefreshCw, TrendingUp, AlertCircle, AlertTriangle } from 'lucide-react';
 
 const API_URL = 'http://127.0.0.1:8000/api';
 
@@ -138,7 +138,42 @@ export default function CloneChat() {
     };
 
     if (loading) {
-        return <div className="subjects-page"><p>Loading...</p></div>;
+        return (
+            <div className="subjects-page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '50vh' }}>
+                <RefreshCw size={32} style={{ marginBottom: '1rem', animation: 'spin 1s linear infinite' }} />
+                <p>Initializing Digital Clone...</p>
+                <p className="text-muted" style={{ fontSize: '0.875rem' }}>Analyzing social media posts to build personality model.</p>
+                <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+            </div>
+        );
+    }
+
+    if (clone && clone.status === 'pending') {
+        return (
+            <div className="subjects-page">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                    <button onClick={() => navigate(`/subjects/${id}`)} style={{ padding: '0.5rem', minWidth: 'auto' }}>
+                        <ArrowLeft size={20} />
+                    </button>
+                    <div style={{ flex: 1 }}>
+                        <h1 style={{ margin: 0 }}>Digital Clone: {subject.name}</h1>
+                        <p className="text-muted">Simulation Pending</p>
+                    </div>
+                </div>
+
+                <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
+                    <AlertTriangle size={48} style={{ margin: '0 auto 1rem', color: 'var(--warning)' }} />
+                    <h2>Clone Not Ready</h2>
+                    <p className="text-muted" style={{ maxWidth: '500px', margin: '0 auto 1.5rem' }}>
+                        To create a digital clone simulation, we need to analyze the subject's social media posts.
+                        Currently, there are no posts available for {subject.name}.
+                    </p>
+                    <button onClick={() => navigate(`/subjects/${id}`)}>
+                        Go to Subject Profile to Add Social Feeds
+                    </button>
+                </div>
+            </div>
+        );
     }
 
     if (!subject || !clone) {
@@ -159,7 +194,7 @@ export default function CloneChat() {
                 </button>
                 <div style={{ flex: 1 }}>
                     <h1 style={{ margin: 0 }}>Digital Clone: {subject.name}</h1>
-                    <p className="text-muted">Test arguments before real-world use</p>
+                    <p className="text-muted">Simulated conversation to test arguments before real-world use</p>
                 </div>
                 <button onClick={handleNewConversation} style={{ background: 'var(--border)' }}>
                     New Conversation
@@ -180,7 +215,7 @@ export default function CloneChat() {
                                 <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
                                     <Bot size={48} style={{ margin: '0 auto 1rem' }} />
                                     <p>Start a conversation to test your arguments against this digital clone.</p>
-                                    <p style={{ fontSize: '0.875rem' }}>The clone will respond based on the subject's personality and beliefs extracted from their social media posts.</p>
+                                    <p style={{ fontSize: '0.875rem' }}>This is a simulation based on the subject's personality and beliefs extracted from their social media posts.</p>
                                 </div>
                             ) : (
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

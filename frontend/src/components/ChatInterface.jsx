@@ -30,7 +30,11 @@ export default function ChatInterface() {
 
         try {
             const res = await axios.post('http://127.0.0.1:8000/chat', { query: userMessage.content });
-            const botMessage = { role: 'assistant', content: res.data.response };
+            const botMessage = {
+                role: 'assistant',
+                content: res.data.response,
+                sources: res.data.sources
+            };
             setMessages(prev => [...prev, botMessage]);
         } catch (err) {
             console.error("Chat error:", err);
@@ -126,6 +130,26 @@ export default function ChatInterface() {
                                     lineHeight: '1.4'
                                 }}>
                                     {msg.content}
+                                    {msg.sources && msg.sources.length > 0 && (
+                                        <div style={{ marginTop: '0.75rem', fontSize: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '0.5rem' }}>
+                                            <div style={{ opacity: 0.7, marginBottom: '0.25rem' }}>Sources:</div>
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                                {msg.sources.map((source, i) => (
+                                                    <div key={i} style={{ background: 'rgba(0,0,0,0.2)', padding: '0.5rem', borderRadius: '0.5rem' }}>
+                                                        <div style={{ fontWeight: 'bold', color: 'var(--accent)', marginBottom: '0.25rem' }}>
+                                                            {source.type === 'social_post' ? 'Social Post' :
+                                                                source.type === 'content_log' ? 'Content Log' :
+                                                                    source.type === 'subject' ? 'Subject Profile' :
+                                                                        source.type}
+                                                        </div>
+                                                        <div style={{ opacity: 0.9, fontStyle: 'italic' }}>
+                                                            "{source.content.length > 100 ? source.content.substring(0, 100) + '...' : source.content}"
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { User, ArrowLeft, Twitter, Instagram, Facebook, Video, RefreshCw, AlertTriangle, TrendingUp } from 'lucide-react';
+import { User, ArrowLeft, Twitter, Instagram, Facebook, Video, RefreshCw, AlertTriangle, TrendingUp, Edit2, Save, X } from 'lucide-react';
 
 const API_URL = 'http://127.0.0.1:8000/api';
 
@@ -16,6 +16,8 @@ export default function SubjectDetail() {
     const [riskProfile, setRiskProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [scraping, setScraping] = useState(false);
+    const [isEditingNotes, setIsEditingNotes] = useState(false);
+    const [editedNotes, setEditedNotes] = useState('');
 
     useEffect(() => {
         if (id) {
@@ -40,12 +42,25 @@ export default function SubjectDetail() {
             const postsRes = await axios.get(`${API_URL}/subjects/${id}/social-posts?limit=50`);
             setSocialPosts(postsRes.data);
 
-            // Fetch risk profile
+            // Fetch risk analysis
             try {
-                const riskRes = await axios.get(`${API_URL}/subjects/${id}/risk-profile`);
-                setRiskProfile(riskRes.data);
+                const riskRes = await axios.get(`${API_URL}/subjects/${id}/risk-analysis`);
+                // Map the new API response to the state structure
+                setRiskProfile({
+                    overall_risk_score: riskRes.data.current_risk_score,
+                    risk_trend: riskRes.data.risk_trend,
+                    escalation_indicators: riskRes.data.escalation_indicators,
+                    detected_themes: [], // Will be populated if we merge endpoints later
+                    post_count: 0 // Not returned by new endpoint yet
+                });
             } catch (err) {
-                console.log("No risk profile yet");
+                console.log("No risk analysis yet, trying legacy profile...");
+                try {
+                    const legacyRes = await axios.get(`${API_URL}/subjects/${id}/risk-profile`);
+                    setRiskProfile(legacyRes.data);
+                } catch (e) {
+                    console.log("No risk profile found");
+                }
             }
 
         } catch (err) {
@@ -75,6 +90,18 @@ export default function SubjectDetail() {
             await fetchSubjectData();
         } catch (err) {
             console.error("Error generating risk profile:", err);
+        }
+    };
+
+    const handleSaveNotes = async () => {
+        try {
+            const updatedSubject = { ...subject, notes: editedNotes };
+            await axios.put(`${API_URL}/subjects/${id}`, updatedSubject);
+            setSubject(updatedSubject);
+            setIsEditingNotes(false);
+        } catch (err) {
+            console.error("Error updating notes:", err);
+            alert("Failed to save notes.");
         }
     };
 
@@ -158,10 +185,105 @@ export default function SubjectDetail() {
                             </span>
                         </div>
                         <div>
-                            <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.5rem' }}>Notes</label>
-                            <p>{subject.notes || 'No notes added.'}</p>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                                <label style={{ fontWeight: 'bold' }}>Notes</label>
+                                {!isEditingNotes && (
+                                    <button
+                                        onClick={() => {
+                                            setEditedNotes(subject.notes || '');
+                                            setIsEditingNotes(true);
+                                        }}
+                                        style={{ background: 'transparent', border: 'none', padding: '0.25rem', color: 'var(--primary)', cursor: 'pointer' }}
+                                    >
+                                        <Edit2 size={16} />
+                                    </button>
+                                )}
+                            </div>
+
+                            {isEditingNotes ? (
+                                <div>
+                                    <textarea
+                                        value={editedNotes}
+                                        onChange={(e) => setEditedNotes(e.target.value)}
+                                        style={{
+                                            width: '100%',
+                                            minHeight: '150px',
+                                            padding: '0.75rem',
+                                            background: 'var(--background)',
+                                            border: '1px solid var(--border)',
+                                            color: 'var(--text)',
+                                            borderRadius: '0.5rem',
+                                            marginBottom: '0.5rem',
+                                            fontFamily: 'inherit'
+                                        }}
+                                        placeholder="Add notes about this subject..."
+                                    />
+                                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                                        <button
+                                            onClick={() => setIsEditingNotes(false)}
+                                            style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)' }}
+                                        >
+                                            <X size={16} style={{ marginRight: '0.25rem' }} /> Cancel
+                                        </button>
+                                        <button onClick={handleSaveNotes}>
+                                            <Save size={16} style={{ marginRight: '0.25rem' }} /> Save Notes
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <p style={{ whiteSpace: 'pre-wrap' }}>{subject.notes || 'No notes added.'}</p>
+                            )}
                         </div>
                     </div>
+
+                    {/* Risk Analysis Summary */}
+                    {riskProfile && (
+                        <div className="card" style={{ borderLeft: `4px solid ${getRiskColor(riskProfile.overall_risk_score)}`, marginTop: '1rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                                <div>
+                                    <h3>Risk Analysis</h3>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+                                        <div style={{
+                                            fontSize: '3rem',
+                                            fontWeight: 'bold',
+                                            color: getRiskColor(riskProfile.overall_risk_score)
+                                        }}>
+                                            {Math.round(riskProfile.overall_risk_score)}/10
+                                        </div>
+                                        <div>
+                                            <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+                                                {riskProfile.overall_risk_score >= 8 ? 'Critical Risk' :
+                                                    riskProfile.overall_risk_score >= 5 ? 'High Risk' : 'Low Risk'}
+                                            </div>
+                                            <div className="text-muted">
+                                                Trend: {riskProfile.risk_trend || 'Stable'}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Escalation Indicators */}
+                                {riskProfile.escalation_indicators && riskProfile.escalation_indicators.length > 0 && (
+                                    <div style={{
+                                        background: 'rgba(239, 68, 68, 0.1)',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        maxWidth: '400px'
+                                    }}>
+                                        <strong style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--danger)', marginBottom: '0.5rem' }}>
+                                            <AlertTriangle size={16} />
+                                            Escalation Indicators
+                                        </strong>
+                                        <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '0.9rem' }}>
+                                            {riskProfile.escalation_indicators.map((indicator, i) => (
+                                                <li key={i}>{indicator}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -274,20 +396,50 @@ export default function SubjectDetail() {
                     ) : (
                         <div style={{ display: 'grid', gap: '1.5rem' }}>
                             {/* Risk Score */}
-                            <div className="card">
-                                <h3>Overall Risk Score</h3>
-                                <div style={{ textAlign: 'center', padding: '2rem' }}>
-                                    <div style={{
-                                        fontSize: '4rem',
-                                        fontWeight: 'bold',
-                                        color: getRiskColor(riskProfile.overall_risk_score)
-                                    }}>
-                                        {Math.round(riskProfile.overall_risk_score)}
+                            {/* Risk Analysis Card */}
+                            <div className="card" style={{ borderLeft: `4px solid ${getRiskColor(riskProfile.overall_risk_score)}` }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                                    <div>
+                                        <h3>Risk Analysis</h3>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+                                            <div style={{
+                                                fontSize: '3rem',
+                                                fontWeight: 'bold',
+                                                color: getRiskColor(riskProfile.overall_risk_score)
+                                            }}>
+                                                {Math.round(riskProfile.overall_risk_score)}/10
+                                            </div>
+                                            <div>
+                                                <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+                                                    {riskProfile.overall_risk_score >= 8 ? 'Critical Risk' :
+                                                        riskProfile.overall_risk_score >= 5 ? 'High Risk' : 'Low Risk'}
+                                                </div>
+                                                <div className="text-muted">
+                                                    Trend: {riskProfile.risk_trend || 'Stable'}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p className="text-muted">out of 100</p>
-                                    <p className="text-muted" style={{ fontSize: '0.875rem' }}>
-                                        Based on {riskProfile.post_count} social media posts
-                                    </p>
+
+                                    {/* Escalation Indicators */}
+                                    {riskProfile.escalation_indicators && riskProfile.escalation_indicators.length > 0 && (
+                                        <div style={{
+                                            background: 'rgba(239, 68, 68, 0.1)',
+                                            padding: '1rem',
+                                            borderRadius: '8px',
+                                            maxWidth: '400px'
+                                        }}>
+                                            <strong style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--danger)', marginBottom: '0.5rem' }}>
+                                                <AlertTriangle size={16} />
+                                                Escalation Indicators
+                                            </strong>
+                                            <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '0.9rem' }}>
+                                                {riskProfile.escalation_indicators.map((indicator, i) => (
+                                                    <li key={i}>{indicator}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 

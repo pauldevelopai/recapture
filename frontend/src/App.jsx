@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import Scanner from './components/Scanner';
 import ArgumentBuilder from './components/ArgumentBuilder';
 import SubjectsView from './components/SubjectsView';
 import SubjectDetail from './components/SubjectDetail';
@@ -9,7 +8,8 @@ import AuthoritiesView from './components/AuthoritiesView';
 import ChatInterface from './components/ChatInterface';
 import IntelCenter from './components/IntelCenter';
 import LoginButton from './components/LoginButton';
-import { Shield, LayoutDashboard, Search, Activity, AlertTriangle, MessageSquare, Users, UserCheck, TrendingUp, Database } from 'lucide-react';
+import CloneDashboard from './components/CloneDashboard';
+import { Shield, LayoutDashboard, Search, Activity, AlertTriangle, MessageSquare, Users, UserCheck, TrendingUp, Database, Bot } from 'lucide-react';
 
 function NavLink({ to, children, icon: Icon }) {
   const location = useLocation();
@@ -34,11 +34,11 @@ function App() {
           </div>
           <div className="nav-links">
             <NavLink to="/" icon={Users}>Subjects</NavLink>
+            <NavLink to="/clones" icon={Bot}>Digital Clones</NavLink>
             <NavLink to="/intel" icon={Database}>Intel Center</NavLink>
             <NavLink to="/authorities" icon={UserCheck}>Authorities</NavLink>
             <NavLink to="/arguments" icon={MessageSquare}>Arguments</NavLink>
             <NavLink to="/success" icon={TrendingUp}>Success Tracking</NavLink>
-            <NavLink to="/scanner" icon={Search}>Digital Diet Scanner</NavLink>
           </div>
           <div style={{ marginTop: 'auto' }}>
             <LoginButton />
@@ -48,13 +48,13 @@ function App() {
         <main className="main-content"> {/* Changed class name */}
           <Routes>
             <Route path="/" element={<SubjectsView />} />
+            <Route path="/clones" element={<CloneDashboard />} />
             <Route path="/subjects/:id" element={<SubjectDetail />} />
             <Route path="/subjects/:id/clone" element={<CloneChat />} />
             <Route path="/intel" element={<IntelCenter />} />
             <Route path="/authorities" element={<AuthoritiesView />} />
             <Route path="/arguments" element={<ArgumentBuilder />} />
             <Route path="/success" element={<Dashboard />} />
-            <Route path="/scanner" element={<Scanner />} />
           </Routes>
         </main>
         <ChatInterface />

@@ -91,3 +91,28 @@ def get_collection_stats() -> Dict:
     except Exception as e:
         print(f"Error getting collection stats: {e}")
         return {"total_documents": 0, "collection_name": "recapture_knowledge_base"}
+
+def get_all_documents(limit: int = 100, offset: int = 0) -> List[Dict]:
+    """
+    Retrieves all documents from the vector store with pagination.
+    """
+    try:
+        results = collection.get(
+            limit=limit,
+            offset=offset,
+            include=['documents', 'metadatas']
+        )
+        
+        combined_results = []
+        if results['ids']:
+            for i in range(len(results['ids'])):
+                combined_results.append({
+                    "id": results['ids'][i],
+                    "content": results['documents'][i],
+                    "metadata": results['metadatas'][i]
+                })
+                
+        return combined_results
+    except Exception as e:
+        print(f"Error getting all documents: {e}")
+        return []

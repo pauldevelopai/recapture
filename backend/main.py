@@ -47,8 +47,8 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    response = await chat_with_data(request.query)
-    return {"response": response}
+    result = await chat_with_data(request.query)
+    return {"response": result["response"], "sources": result["sources"]}
 
 @app.post("/analyze", response_model=AnalysisResponse)
 async def analyze_content(request: AnalysisRequest):
@@ -157,7 +157,13 @@ async def create_argument(request: ArgumentRequest):
             conn.close()
 
         # 2. Fetch RAG Context
-        rag_context = await retrieve_context(request.context or "")
+        # Construct a comprehensive query to pull relevant profile info, authorities, and trends
+        if subject_data:
+            rag_query = f"Information about subject {subject_data['name']}, their authorities, recent content consumption, and relevant trends related to: {request.context}"
+        else:
+            rag_query = request.context or ""
+            
+        rag_context = await retrieve_context(rag_query)
 
         # 3. Generate Argument
         result = await generate_argument(
@@ -219,11 +225,15 @@ async def train_batch():
     result = await train_approved_batch()
     return result
 
-from .vector_store import get_collection_stats
+from .vector_store import get_collection_stats, get_all_documents
 
 @app.get("/pipeline/stats")
 async def get_pipeline_stats():
     return get_collection_stats()
+
+@app.get("/api/rag/documents")
+async def get_rag_documents(limit: int = 100, offset: int = 0):
+    return get_all_documents(limit, offset)
 
 from .pipeline_service import add_topic, get_topics
 
@@ -282,3 +292,91 @@ async def promote_listening_result(result: ListeningResult):
     
     await add_raw_content(content)
     return {"status": "promoted", "id": content.id}
+
+# --- Risk Monitoring Endpoints ---
+from .risk_monitor import RiskMonitor
+
+@app.get("/api/subjects/at-risk")
+async def get_at_risk_subjects():
+    """
+    Returns list of subjects who need intervention based on risk analysis.
+    """
+    return RiskMonitor.get_at_risk_subjects()
+
+@app.get("/api/subjects/{subject_id}/risk-analysis")
+async def analyze_subject_risk(subject_id: str):
+    """
+    Returns detailed risk analysis for a specific subject.
+    """
+    analysis = RiskMonitor.analyze_subject_risk(subject_id)
+    if not analysis:
+        raise HTTPException(status_code=404, detail="Subject not found")
+    return analysis
+
+# --- Authority Matching Endpoints ---
+from .authority_matcher import AuthorityMatcher
+from .discovery_service import DiscoveryService
+from .bot_farm_service import BotFarmService
+from pydantic import BaseModel # Assuming BaseModel is imported from pydantic
+
+@app.get("/api/subjects/{subject_id}/recommended-authorities")
+async def get_recommended_authorities(subject_id: str, top_n: int = 3):
+    """
+    Returns recommended authorities for a subject based on risk profile.
+    """
+    recommendations = AuthorityMatcher.recommend_authorities_for_subject(subject_id, top_n)
+    return recommendations
+
+# Discovery Endpoints
+@app.get("/api/discovery/search")
+async def search_subjects(query: str):
+    return DiscoveryService.search_subjects(query)
+
+class ImportProfileRequest(BaseModel):
+    username: str
+    platform: str
+    sample_post: str
+    risk_indicators: list
+
+@app.post("/api/discovery/import")
+async def import_subject(profile: ImportProfileRequest):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        result = DiscoveryService.import_subject(profile.dict(), cursor)
+        conn.commit()
+        return result
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        conn.close()
+
+
+# --- Bot Farm & Campaign Endpoints ---
+
+@app.get("/api/bot-farms")
+def get_bot_farms():
+    return BotFarmService.get_all_farms()
+
+@app.get("/api/campaigns")
+def get_campaigns():
+    return BotFarmService.get_all_campaigns()
+
+@app.post("/api/campaigns/simulate")
+def simulate_campaign_activity():
+    return BotFarmService.simulate_activity()
+
+class CreateCampaignRequest(BaseModel):
+    name: str
+    target_demographic: str
+    narrative_goal: str
+    active_platforms: List[str]
+    bot_farm_id: str
+
+@app.post("/api/campaigns")
+def create_campaign(req: CreateCampaignRequest):
+    return BotFarmService.create_campaign(
+        req.name, req.target_demographic, req.narrative_goal, req.active_platforms, req.bot_farm_id
+    )
+

@@ -5,6 +5,7 @@ import {
     AlertTriangle, Search, Activity, Smartphone, Clock, ShieldAlert, LayoutDashboard
 } from 'lucide-react';
 import ListeningFeed from './ListeningFeed';
+import BotFarmMonitor from './BotFarmMonitor';
 
 
 export default function IntelCenter() {
@@ -31,6 +32,17 @@ export default function IntelCenter() {
     // --- ThreatMonitor State ---
     const [trends, setTrends] = useState([]);
     const [loadingTrends, setLoadingTrends] = useState(true);
+    const [trendPage, setTrendPage] = useState(1);
+    const itemsPerPage = 10;
+
+    // --- Listening Feed State ---
+    const [logPage, setLogPage] = useState(1);
+
+    // --- Knowledge Base State ---
+    const [showSourcesModal, setShowSourcesModal] = useState(false);
+    const [ragDocuments, setRagDocuments] = useState([]);
+    const [loadingDocs, setLoadingDocs] = useState(false);
+    const [docPage, setDocPage] = useState(1);
 
     useEffect(() => {
         // Initial Fetch
@@ -116,6 +128,20 @@ export default function IntelCenter() {
         } catch (e) { console.error(e); } finally { setIsScanning(false); }
     };
 
+    const fetchRagDocuments = async () => {
+        setLoadingDocs(true);
+        try {
+            const res = await axios.get(`http://127.0.0.1:8000/api/rag/documents?limit=100&offset=${(docPage - 1) * 100}`);
+            setRagDocuments(res.data);
+        } catch (e) { console.error(e); } finally { setLoadingDocs(false); }
+    };
+
+    useEffect(() => {
+        if (showSourcesModal) {
+            fetchRagDocuments();
+        }
+    }, [showSourcesModal, docPage]);
+
     // --- Derived Stats for Dashboard ---
     const totalTime = (logs || []).length * 5; // Mock calculation
     const avgRisk = (logs || []).length > 0 ? (logs || []).reduce((acc, l) => acc + (l.risk_score || 0), 0) / logs.length : 0;
@@ -148,6 +174,13 @@ export default function IntelCenter() {
                         style={{ background: activeTab === 'management' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
                     >
                         <Database size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Management
+                    </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'bot-farms' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('bot-farms')}
+                        style={{ background: activeTab === 'bot-farms' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
+                    >
+                        <ShieldAlert size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Bot Farms
                     </button>
                 </div>
             </div>
@@ -192,7 +225,7 @@ export default function IntelCenter() {
                         {/* Left Column: Active Trends List */}
                         <div className="lg:col-span-2 space-y-6">
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                                {(trends || []).map(trend => (
+                                {(trends || []).slice((trendPage - 1) * itemsPerPage, trendPage * itemsPerPage).map(trend => (
                                     <div key={trend.id} className="card" style={{ borderTop: `4px solid ${trend.risk_level === 'High' ? 'var(--danger)' : 'var(--primary)'}` }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
                                             <h3 style={{ margin: 0 }}>{trend.topic}</h3>
@@ -229,6 +262,14 @@ export default function IntelCenter() {
                                 ))}
                                 {(trends || []).length === 0 && <p className="text-muted">No active threats detected.</p>}
                             </div>
+                            {/* Trend Pagination */}
+                            {trends.length > itemsPerPage && (
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
+                                    <button onClick={() => setTrendPage(p => Math.max(1, p - 1))} disabled={trendPage === 1} style={{ padding: '0.5rem 1rem' }}>Previous</button>
+                                    <span style={{ display: 'flex', alignItems: 'center' }}>Page {trendPage} of {Math.ceil(trends.length / itemsPerPage)}</span>
+                                    <button onClick={() => setTrendPage(p => Math.min(Math.ceil(trends.length / itemsPerPage), p + 1))} disabled={trendPage >= Math.ceil(trends.length / itemsPerPage)} style={{ padding: '0.5rem 1rem' }}>Next</button>
+                                </div>
+                            )}
                         </div>
 
                         {/* Right Column: Live Listening Feed */}
@@ -275,7 +316,12 @@ export default function IntelCenter() {
                                 <strong style={{ color: 'var(--primary)' }}><Database size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />Model Knowledge Base</strong>
                                 <p className="text-muted" style={{ margin: '0.25rem 0 0 0', fontSize: '0.9rem' }}>Total documents trained</p>
                             </div>
-                            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)' }}>{modelStats.total_documents}</div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)' }}>{modelStats.total_documents}</div>
+                                <button onClick={() => setShowSourcesModal(true)} style={{ background: 'var(--surface)', border: '1px solid var(--primary)', color: 'var(--primary)', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer' }}>
+                                    View All Sources
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -323,7 +369,7 @@ export default function IntelCenter() {
                         <div className="card">
                             <h3>Recent Activity Log</h3>
                             <div className="list">
-                                {logs.map(log => (
+                                {logs.slice((logPage - 1) * itemsPerPage, logPage * itemsPerPage).map(log => (
                                     <div key={log.id} style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                                         <div>
                                             <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{log.platform}</div>
@@ -335,6 +381,15 @@ export default function IntelCenter() {
                                     </div>
                                 ))}
                                 {logs.length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '1rem' }}>No activity recorded yet.</p>}
+
+                                {/* Log Pagination */}
+                                {logs.length > itemsPerPage && (
+                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', padding: '1rem' }}>
+                                        <button onClick={() => setLogPage(p => Math.max(1, p - 1))} disabled={logPage === 1} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Prev</button>
+                                        <span style={{ fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>{logPage} / {Math.ceil(logs.length / itemsPerPage)}</span>
+                                        <button onClick={() => setLogPage(p => Math.min(Math.ceil(logs.length / itemsPerPage), p + 1))} disabled={logPage >= Math.ceil(logs.length / itemsPerPage)} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Next</button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div>
@@ -397,6 +452,49 @@ export default function IntelCenter() {
                             </div>
                         ))}
                         {content.filter(c => c.status === 'pending').length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '2rem' }}>No pending items.</p>}
+                    </div>
+                </div>
+            )}
+            {/* --- BOT FARMS TAB --- */}
+            {activeTab === 'bot-farms' && <BotFarmMonitor />}
+
+            {/* --- SOURCES MODAL --- */}
+            {showSourcesModal && (
+                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+                    <div className="card" style={{ width: '90%', maxWidth: '800px', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: '0' }}>
+                        <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h2 style={{ margin: 0 }}>Knowledge Base Sources</h2>
+                            <button onClick={() => setShowSourcesModal(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text)' }}><X size={24} /></button>
+                        </div>
+                        <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1 }}>
+                            {loadingDocs ? (
+                                <div style={{ textAlign: 'center', padding: '2rem' }}><RefreshCw className="animate-spin" size={32} /></div>
+                            ) : (
+                                <div style={{ display: 'grid', gap: '1rem' }}>
+                                    {ragDocuments.map((doc, i) => (
+                                        <div key={i} style={{ padding: '1rem', background: 'var(--background)', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                                <strong style={{ color: 'var(--primary)' }}>{doc.metadata?.type || 'Unknown Type'}</strong>
+                                                <span className="text-muted" style={{ fontSize: '0.8rem' }}>ID: {doc.id.substring(0, 8)}...</span>
+                                            </div>
+                                            <p style={{ fontSize: '0.9rem', margin: 0, whiteSpace: 'pre-wrap' }}>{doc.content.substring(0, 200)}...</p>
+                                            {doc.metadata && (
+                                                <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                                                    {Object.entries(doc.metadata).map(([k, v]) => (
+                                                        <span key={k} style={{ marginRight: '1rem' }}>{k}: {v}</span>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <div style={{ padding: '1rem', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'center', gap: '1rem' }}>
+                            <button onClick={() => setDocPage(p => Math.max(1, p - 1))} disabled={docPage === 1}>Previous</button>
+                            <span style={{ display: 'flex', alignItems: 'center' }}>Page {docPage}</span>
+                            <button onClick={() => setDocPage(p => p + 1)} disabled={ragDocuments.length < 100}>Next</button>
+                        </div>
                     </div>
                 </div>
             )}
