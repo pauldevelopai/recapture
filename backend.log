@@ -1,7 +1,7 @@
 INFO:     Will watch for changes in these directories: ['/Users/paulmcnally/Developai Dropbox/Paul McNally/Mac/Documents/ONMAC/PYTHON 2025/recapture']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [48098] using WatchFiles
-INFO:     Started server process [48395]
+INFO:     Started reloader process [56618] using WatchFiles
+INFO:     Started server process [56815]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 DEBUG: OpenAI API Key loaded: True
@@ -9,15 +9,62 @@ Starting data ingestion...
 Collection cleared.
 Successfully added 55 documents to vector store.
 Data ingestion complete. Ingested 55 items.
-INFO:     127.0.0.1:63634 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63634 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63618 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63618 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63624 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63623 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63624 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63623 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63623 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
-INFO:     127.0.0.1:63623 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
-Searching: https://html.duckduckgo.com/html/?q=site:reddit.com "hello" (lonely OR depressed OR "need help" OR vent)
-INFO:     127.0.0.1:63635 - "GET /api/discovery/search?query=hello HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53754 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53754 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/profiles HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/profiles HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53728 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53727 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53727 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53728 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53728 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53727 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54254 - "GET /api/listening/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54255 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54254 - "GET /api/listening/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54256 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54255 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54257 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54256 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54258 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54257 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54259 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54258 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54260 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54259 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54261 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54257 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54259 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54259 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54259 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54285 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54285 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54305 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54312 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54312 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54341 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54341 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54879 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54879 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54947 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54948 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54947 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54948 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54972 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54972 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54989 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54989 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54990 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54989 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
