@@ -68,3 +68,210 @@ INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
 INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
 INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
 INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/empathy_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56815]
+INFO:     Started server process [61025]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61025]
+INFO:     Started server process [61058]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61058]
+INFO:     Started server process [61094]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61094]
+INFO:     Started server process [61118]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'backend/ai_service.py'. Reloading...
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [61130]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/ai_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61130]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [61209]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'backend/test_empathy_service.py'. Reloading...
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [61220]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+DEBUG: OpenAI API Key loaded: True
+Starting data ingestion...
+Collection cleared.
+Successfully added 55 documents to vector store.
+Data ingestion complete. Ingested 55 items.
+INFO:     127.0.0.1:65059 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65059 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65060 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65060 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65061 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65060 - "GET /api/clones HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/test_rag_empathy_integration.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61220]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [75212]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/test_rag_empathy_integration.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [75212]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [76067]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/translation_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [76067]
+WARNING:  WatchFiles detected changes in 'backend/translation_service.py'. Reloading...
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77557]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77570]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77584]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77593]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77593]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77625]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77625]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77637]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77649]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77649]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77704]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'backend/main.py'. Reloading...
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77714]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77714]
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77765]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'backend/clone_router.py'. Reloading...
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [77781]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+DEBUG: OpenAI API Key loaded: True
+Starting data ingestion...
+Collection cleared.
+Successfully added 55 documents to vector store.
+Data ingestion complete. Ingested 55 items.
+INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57636 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/test_translation_flow.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77781]
+WARNING:  WatchFiles detected changes in 'backend/test_translation_flow.py'. Reloading...
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [78014]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:     Started server process [78234]
+INFO:     Waiting for application startup.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:     Application startup complete.

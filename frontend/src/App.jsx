@@ -23,12 +23,14 @@ function NavLink({ to, children, icon: Icon }) {
   );
 }
 
+import LanguageSelector from './components/LanguageSelector';
+
 function App() {
   return (
     <Router>
-      <div className="app-container"> {/* Changed class name */}
-        <nav className="sidebar"> {/* Changed class name */}
-          <div className="logo"> {/* Added logo div */}
+      <div className="app-container">
+        <nav className="sidebar">
+          <div className="logo">
             <Shield size={32} />
             <span>RECAPTURE</span>
           </div>
@@ -40,7 +42,8 @@ function App() {
             <NavLink to="/arguments" icon={MessageSquare}>Arguments</NavLink>
             <NavLink to="/success" icon={TrendingUp}>Success Tracking</NavLink>
           </div>
-          <div style={{ marginTop: 'auto' }}>
+          <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <LanguageSelector />
             <LoginButton />
           </div>
         </nav>

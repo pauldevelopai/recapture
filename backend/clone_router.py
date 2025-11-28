@@ -60,7 +60,7 @@ async def retrain_clone(clone_id: str):
 async def send_message_to_clone(clone_id: str, request: CloneTestRequest):
     """Send a message to the clone and get a response with effectiveness evaluation"""
     try:
-        result = await chat_with_clone(clone_id, request.message)
+        result = await chat_with_clone(clone_id, request.message, language=request.language)
         return CloneTestResponse(
             clone_response=result['clone_response'],
             effectiveness_score=result['effectiveness_score'],

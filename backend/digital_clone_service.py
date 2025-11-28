@@ -6,6 +6,8 @@ import os
 from openai import OpenAI
 from .database import get_db_connection
 from .models import DigitalClone, CloneConversation, CloneMessage, SubjectSocialPost
+from .empathy_service import detect_empathy, detect_emotions, get_empathy_guidance
+from .translation_service import translate_input_to_english, translate_output_from_english
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -474,10 +476,18 @@ Evaluate the effectiveness of this argument."""
         return 50.0, ["Unable to generate suggestions due to an error."]
 
 
-async def chat_with_clone(clone_id: str, message: str, conversation_id: Optional[str] = None) -> Dict:
+async def chat_with_clone(clone_id: str, message: str, conversation_id: Optional[str] = None, language: str = "en") -> Dict:
     """
-    Send a message to a clone and get response with effectiveness evaluation
+    Send a message to a clone and get response with effectiveness and empathy evaluation.
+    Supports multi-language via translation layer.
     """
+    # Translate input if needed
+    processed_message = await translate_input_to_english(message, language)
+
+    # Analyze empathy in user's argument (on English text)
+    empathy_result = detect_empathy(processed_message)
+    emotion_result = detect_emotions(processed_message)
+    
     conn = get_db_connection()
     cursor = conn.cursor()
     
@@ -514,16 +524,26 @@ async def chat_with_clone(clone_id: str, message: str, conversation_id: Optional
     else:
         conversation_id = str(uuid.uuid4())
     
-    # Generate clone response
-    clone_response = await generate_clone_response(clone, message, conversation_history)
+    # Generate clone response (English)
+    clone_response_en = await generate_clone_response(clone, processed_message, conversation_history)
     
-    # Evaluate effectiveness
-    effectiveness_score, suggestions = await evaluate_argument_effectiveness(clone, message, clone_response)
+    # Evaluate effectiveness (on English text)
+    effectiveness_score, suggestions_en = await evaluate_argument_effectiveness(clone, processed_message, clone_response_en)
     
-    # Add messages to conversation
+    # Translate response and suggestions back to target language
+    clone_response = await translate_output_from_english(clone_response_en, language)
+    
+    suggestions = []
+    for suggestion in suggestions_en:
+        translated_suggestion = await translate_output_from_english(suggestion, language)
+        suggestions.append(translated_suggestion)
+    
+    # Add messages to conversation (Store English version for consistency? Or translated? 
+    # Let's store the English version for model consistency, but maybe we should store both?
+    # For now, storing the English version ensures the clone model stays consistent.)
     now = datetime.now().isoformat()
-    conversation_history.append(CloneMessage(role="user", content=message, timestamp=now))
-    conversation_history.append(CloneMessage(role="clone", content=clone_response, timestamp=now))
+    conversation_history.append(CloneMessage(role="user", content=processed_message, timestamp=now))
+    conversation_history.append(CloneMessage(role="clone", content=clone_response_en, timestamp=now))
     
     # Save conversation
     conversation_json = json.dumps([msg.dict() for msg in conversation_history])
@@ -549,7 +569,16 @@ async def chat_with_clone(clone_id: str, message: str, conversation_id: Optional
         'conversation_id': conversation_id,
         'clone_response': clone_response,
         'effectiveness_score': effectiveness_score,
-        'suggestions': suggestions
+        'suggestions': suggestions,
+        'empathy_analysis': {
+            'argument_empathy_score': empathy_result.get('empathy_score'),
+            'argument_distress_score': empathy_result.get('distress_score'),
+            'dominant_emotion': emotion_result.get('dominant_emotion'),
+            'empathy_guidance': get_empathy_guidance(
+                empathy_result.get('empathy_score', 0.5),
+                empathy_result.get('distress_score', 0.5)
+            )
+        }
     }
 
 

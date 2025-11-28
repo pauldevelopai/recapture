@@ -4,6 +4,7 @@ import uuid
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from .models import AnalysisResponse, ArgumentResponse
+from .empathy_service import detect_empathy, detect_emotions
 
 load_dotenv()
 
@@ -53,6 +54,10 @@ async def generate_argument(
     rag_context: str = ""
 ) -> ArgumentResponse:
     try:
+        # Analyze topic for emotional triggers
+        topic_empathy = detect_empathy(topic)
+        topic_emotion = detect_emotions(topic)
+        
         # Construct a rich system prompt
         system_prompt = """You are an expert in de-radicalization, street epistemology, and empathetic communication. 
         Your goal is to help a young person think more clearly and critically about harmful ideologies, without feeling attacked.
@@ -64,6 +69,15 @@ async def generate_argument(
         4.  **Facts via Curiosity**: Introduce counter-evidence as "something interesting to consider" rather than "the truth".
         5.  **Tone**: Kind, patient, non-judgmental, clear-minded.
         """
+        
+        # Add empathy guidance based on topic analysis
+        if topic_emotion.get("model_available"):
+            dominant_emotion = topic_emotion.get("dominant_emotion", "")
+            if dominant_emotion in ["anger", "fear"]:
+                system_prompt += f"\n\nNOTE: The topic involves {dominant_emotion}. Acknowledge this emotion before challenging beliefs."
+        
+        if topic_empathy.get("distress_score", 0) > 0.5:
+            system_prompt += "\n\nNOTE: This topic may be distressing. Prioritize emotional safety and support."
 
         # Construct the user prompt with all available context
         user_prompt = f"TOPIC/CLAIM: {topic}\n\n"

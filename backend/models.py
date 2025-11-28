@@ -147,6 +147,7 @@ class CloneConversation(BaseModel):
 class CloneTestRequest(BaseModel):
     clone_id: str
     message: str
+    language: Optional[str] = "en"
 
 class CloneTestResponse(BaseModel):
     clone_response: str

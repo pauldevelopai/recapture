@@ -44,11 +44,16 @@ async def read_root():
 
 class ChatRequest(BaseModel):
     query: str
+    language: Optional[str] = "en"
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    result = await chat_with_data(request.query)
-    return {"response": result["response"], "sources": result["sources"]}
+    result = await chat_with_data(request.query, request.language)
+    return {
+        "response": result["response"], 
+        "sources": result["sources"],
+        "empathy_analysis": result.get("empathy_analysis", {})
+    }
 
 @app.post("/analyze", response_model=AnalysisResponse)
 async def analyze_content(request: AnalysisRequest):

@@ -2,6 +2,8 @@ from typing import List, Optional
 from .models import DisinformationTrend
 from .vector_store import query_documents
 from .ai_service import client
+from .empathy_service import detect_empathy, detect_emotions, suggest_empathetic_response
+from .translation_service import translate_input_to_english, translate_output_from_english
 
 async def retrieve_context_with_sources(query: str) -> dict:
     """
@@ -36,17 +38,24 @@ async def retrieve_context(query: str) -> str:
     result = await retrieve_context_with_sources(query)
     return result["context_str"]
 
-async def chat_with_data(query: str) -> dict:
+async def chat_with_data(query: str, language: str = "en") -> dict:
     """
-    Answers a user query using RAG.
-    Returns: { "response": str, "sources": list }
+    Answers a user query using RAG with empathy detection and translation support.
+    Returns: { "response": str, "sources": list, "empathy_analysis": dict }
     """
-    # 1. Retrieve Context
-    retrieval_result = await retrieve_context_with_sources(query)
+    # 0. Translate input if needed
+    processed_query = await translate_input_to_english(query, language)
+    
+    # 1. Analyze query for emotional content (on English text)
+    empathy_result = detect_empathy(processed_query)
+    emotion_result = detect_emotions(processed_query)
+    
+    # 2. Retrieve Context
+    retrieval_result = await retrieve_context_with_sources(processed_query)
     context = retrieval_result["context_str"]
     sources = retrieval_result["sources"]
     
-    # 2. Construct Prompt
+    # 3. Construct empathy-aware prompt
     system_prompt = """You are a helpful assistant for the RECAPTURE application. 
     Your goal is to help users (parents, guardians) protect young people (Subjects) from radicalization.
     You have access to a knowledge base containing information about specific Subjects, their Authorities (influential figures), and active Disinformation Trends.
@@ -57,13 +66,28 @@ async def chat_with_data(query: str) -> dict:
     Be empathetic, practical, and solution-oriented.
     """
     
+    # Adjust system prompt based on emotional state
+    if empathy_result.get("model_available"):
+        distress_score = empathy_result.get("distress_score", 0.5)
+        empathy_score = empathy_result.get("empathy_score", 0.5)
+        
+        if distress_score > 0.6:
+            system_prompt += "\n\nIMPORTANT: The user appears distressed. Prioritize emotional support and validation before providing factual information."
+        elif empathy_score < 0.3:
+            system_prompt += "\n\nIMPORTANT: The user's query lacks empathetic language. Model compassionate communication in your response."
+    
+    if emotion_result.get("model_available"):
+        dominant_emotion = emotion_result.get("dominant_emotion", "")
+        if dominant_emotion in ["anger", "fear", "sadness"]:
+            system_prompt += f"\n\nThe user seems to be feeling {dominant_emotion}. Acknowledge this emotion gently in your response."
+    
     user_prompt = f"""Context Information:
     {context}
     
     User Question: {query}
     """
     
-    # 3. Call OpenAI
+    # 4. Call OpenAI
     try:
         response = await client.chat.completions.create(
             model="gpt-4o",
@@ -72,14 +96,25 @@ async def chat_with_data(query: str) -> dict:
                 {"role": "user", "content": user_prompt}
             ]
         )
+        
+        english_response = response.choices[0].message.content
+        final_response = await translate_output_from_english(english_response, language)
+        
         return {
-            "response": response.choices[0].message.content,
-            "sources": sources
+            "response": final_response,
+            "sources": sources,
+            "empathy_analysis": {
+                "query_empathy": empathy_result.get("empathy_score"),
+                "query_distress": empathy_result.get("distress_score"),
+                "dominant_emotion": emotion_result.get("dominant_emotion"),
+                "empathy_guidance": suggest_empathetic_response(context, processed_query)
+            }
         }
     except Exception as e:
         return {
             "response": f"Error generating response: {str(e)}",
-            "sources": []
+            "sources": [],
+            "empathy_analysis": {}
         }
 
 async def augment_analysis_with_context(text: str, base_analysis: dict) -> dict:
