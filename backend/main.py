@@ -269,9 +269,9 @@ async def stop_listening():
 async def get_listening_status():
     return {"running": listening_service.is_running()}
 
-@app.get("/api/listening/feed", response_model=List[ListeningResult])
-async def get_listening_feed():
-    return listening_service.get_latest_results()
+@app.get("/api/listening/feed")
+async def get_listening_feed(page: int = 1, page_size: int = 20):
+    return listening_service.get_latest_results(page, page_size)
 
 @app.post("/api/listening/promote")
 async def promote_listening_result(result: ListeningResult):

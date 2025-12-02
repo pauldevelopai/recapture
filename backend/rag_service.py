@@ -61,9 +61,12 @@ async def chat_with_data(query: str, language: str = "en") -> dict:
     You have access to a knowledge base containing information about specific Subjects, their Authorities (influential figures), and active Disinformation Trends.
     
     Use the provided context to answer the user's question. 
-    If the user asks about a specific Subject (e.g., "How is Alex doing?"), look for "Subject:" or "Profile:" entries in the context.
-    If the answer is not in the context, use your general knowledge but mention that it's general advice.
-    Be empathetic, practical, and solution-oriented.
+    
+    GUIDELINES:
+    1. **Use the Context**: Explicitly reference the information provided in the context (e.g., "I see a trend called...", "Recent posts show...").
+    2. **Subject Connection**: If the user asks about "my child" or "my son/daughter" and there is Subject data in the context, assume they might be related. Use the specific details from the Subject's posts or profile to give tailored advice.
+    3. **General Knowledge**: If the answer is not in the context, use your general knowledge but clearly state that it is general advice.
+    4. **Tone**: Be empathetic, practical, non-judgmental, and solution-oriented. Prioritize de-escalation and open communication.
     """
     
     # Adjust system prompt based on emotional state

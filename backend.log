@@ -1,127 +1,8 @@
 INFO:     Will watch for changes in these directories: ['/Users/paulmcnally/Developai Dropbox/Paul McNally/Mac/Documents/ONMAC/PYTHON 2025/recapture']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [56618] using WatchFiles
-INFO:     Started server process [56815]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-DEBUG: OpenAI API Key loaded: True
-Starting data ingestion...
-Collection cleared.
-Successfully added 55 documents to vector store.
-Data ingestion complete. Ingested 55 items.
-INFO:     127.0.0.1:53754 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53754 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53764 - "GET /api/profiles HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53765 - "GET /api/profiles HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53728 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53727 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53727 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53728 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53728 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53727 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53765 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53764 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53765 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54254 - "GET /api/listening/feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54255 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54254 - "GET /api/listening/feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54256 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54255 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54257 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54256 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54258 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54257 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54259 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54258 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54260 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54259 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54261 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54257 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54259 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54259 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54259 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54285 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54285 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54305 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54312 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54312 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54341 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54341 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54879 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54879 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54947 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54948 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54947 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54948 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54972 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54972 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54974 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54974 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54989 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54989 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54990 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54989 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55032 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55033 - "GET /api/clones HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'backend/empathy_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [56815]
-INFO:     Started server process [61025]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [61025]
-INFO:     Started server process [61058]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [61058]
-INFO:     Started server process [61094]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [61094]
-INFO:     Started server process [61118]
-INFO:     Waiting for application startup.
-WARNING:  WatchFiles detected changes in 'backend/ai_service.py'. Reloading...
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
+INFO:     Started reloader process [37945] using WatchFiles
 INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [61130]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/ai_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [61130]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [61209]
-INFO:     Waiting for application startup.
-WARNING:  WatchFiles detected changes in 'backend/test_empathy_service.py'. Reloading...
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [61220]
+INFO:     Started server process [38141]
 INFO:     Waiting for application startup.
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:     Application startup complete.
@@ -130,148 +11,286 @@ Starting data ingestion...
 Collection cleared.
 Successfully added 55 documents to vector store.
 Data ingestion complete. Ingested 55 items.
-INFO:     127.0.0.1:65059 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65059 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65060 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65060 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65061 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65060 - "GET /api/clones HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'backend/test_rag_empathy_integration.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [61220]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [75212]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/test_rag_empathy_integration.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [75212]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [76067]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/translation_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [76067]
-WARNING:  WatchFiles detected changes in 'backend/translation_service.py'. Reloading...
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77557]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77570]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/rag_service.py'. Reloading...
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77584]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77593]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [77593]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77625]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [77625]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77637]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77649]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/main.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [77649]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77704]
-INFO:     Waiting for application startup.
-WARNING:  WatchFiles detected changes in 'backend/main.py'. Reloading...
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77714]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/models.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [77714]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77765]
-INFO:     Waiting for application startup.
-WARNING:  WatchFiles detected changes in 'backend/clone_router.py'. Reloading...
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [77781]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-DEBUG: OpenAI API Key loaded: True
-Starting data ingestion...
-Collection cleared.
-Successfully added 55 documents to vector store.
-Data ingestion complete. Ingested 55 items.
-INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57627 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57636 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57635 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57635 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57636 - "GET /api/clones HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'backend/test_translation_flow.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [77781]
-WARNING:  WatchFiles detected changes in 'backend/test_translation_flow.py'. Reloading...
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [78014]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [78234]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
+INFO:     127.0.0.1:59665 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59683 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59684 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59684 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59683 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59684 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59689 - "GET /api/listening/feed?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59683 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59690 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59689 - "GET /api/listening/feed?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59691 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59694 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59691 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59750 - "GET /api/listening/feed?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59691 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59751 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59752 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59751 - "GET /api/listening/feed?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59691 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59682 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59750 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59665 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60534 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60889 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60892 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61193 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61196 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62526 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64323 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64763 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65086 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65402 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK

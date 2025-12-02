@@ -164,11 +164,15 @@ class AuthorityMatcher:
         authorities = cursor.fetchall()
         conn.close()
         
-        if not authorities:
-            return []
-        
         # Extract themes from subject's content
         themes = AuthorityMatcher.extract_themes_from_posts(subject_id)
+
+        if not authorities:
+            return {
+                "subject_id": subject_id,
+                "detected_themes": themes,
+                "recommendations": []
+            }
         
         # Score each authority
         recommendations = []

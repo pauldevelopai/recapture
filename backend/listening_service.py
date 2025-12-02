@@ -114,10 +114,17 @@ class ListeningService:
                     return trend
         return None
 
-    def get_latest_results(self, limit: int = 100) -> List[ListeningResult]:
+    def get_latest_results(self, page: int = 1, page_size: int = 20) -> Dict:
+        offset = (page - 1) * page_size
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM listening_results ORDER BY timestamp DESC LIMIT ?", (limit,))
+        
+        # Get total count
+        cursor.execute("SELECT COUNT(*) FROM listening_results")
+        total_count = cursor.fetchone()[0]
+        
+        # Get paginated results
+        cursor.execute("SELECT * FROM listening_results ORDER BY timestamp DESC LIMIT ? OFFSET ?", (page_size, offset))
         rows = cursor.fetchall()
         conn.close()
         
@@ -134,7 +141,14 @@ class ListeningService:
                 severity=row['severity'],
                 url=row['url']
             ))
-        return results
+            
+        return {
+            "items": results,
+            "total": total_count,
+            "page": page,
+            "page_size": page_size,
+            "total_pages": (total_count + page_size - 1) // page_size
+        }
 
 # Global instance
 listening_service = ListeningService()

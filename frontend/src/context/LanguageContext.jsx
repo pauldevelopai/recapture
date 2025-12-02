@@ -13,7 +13,11 @@ export const SUPPORTED_LANGUAGES = [
     { code: 'am', name: 'Amharic', flag: '🇪🇹' },
     { code: 'so', name: 'Somali', flag: '🇸🇴' },
     { code: 'sn', name: 'Shona', flag: '🇿🇼' },
-    { code: 'af', name: 'Afrikaans', flag: '🇿🇦' }
+    { code: 'af', name: 'Afrikaans', flag: '🇿🇦' },
+    { code: 'om', name: 'Oromo', flag: '🇪🇹' },
+    { code: 'rw', name: 'Kinyarwanda', flag: '🇷🇼' },
+    { code: 'tw', name: 'Twi', flag: '🇬🇭' },
+    { code: 'st', name: 'Sesotho', flag: '🇱🇸' }
 ];
 
 export const LanguageProvider = ({ children }) => {

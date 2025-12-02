@@ -3,12 +3,7 @@
 > vite
 
 
-  VITE v7.2.4  ready in 208 ms
+  VITE v7.2.4  ready in 176 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-5:36:13 PM [vite] (client) page reload src/main.jsx
-5:36:15 PM [vite] (client) hmr update /src/App.jsx
-5:36:15 PM [vite] (client) hmr update /src/App.jsx
-5:36:46 PM [vite] (client) hmr update /src/components/CloneChat.jsx
-5:36:48 PM [vite] (client) hmr update /src/components/ChatInterface.jsx

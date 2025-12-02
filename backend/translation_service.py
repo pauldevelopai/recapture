@@ -25,7 +25,11 @@ SUPPORTED_LANGUAGES = {
     "am": "Amharic",
     "so": "Somali",
     "sn": "Shona",
-    "af": "Afrikaans"
+    "af": "Afrikaans",
+    "om": "Oromo",
+    "rw": "Kinyarwanda",
+    "tw": "Twi",
+    "st": "Sesotho"
 }
 
 async def translate_text(text: str, target_lang: str, source_lang: str = "auto") -> str:

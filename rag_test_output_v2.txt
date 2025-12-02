@@ -1,0 +1,116 @@
+DEBUG: OpenAI API Key loaded: True
+🧪 Testing RAG Chat Quality
+
+============================================================
+
+📝 Query: What are the common signs of radicalization in teenagers?
+------------------------------
+❤️ Empathy Score: 0.9898616075515747
+😫 Distress Score: 0.9891290664672852
+😡 Dominant Emotion: neutral
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: Exploring the radicalization pipeline on Youtube., Severity: Medium. Common Ph...
+   2. [trend] Disinformation Trend: Theo Triantafyllidis Presents: Radicalization Pipeline - YouTube, Severity: Me...
+   3. [trend] Disinformation Trend: [1908.08313] Auditing Radicalization Pathways on YouTube - arXiv, Severity: Me...
+
+🤖 Response:
+I understand that you might be worried about your teenager, and it's important to be cautious and aware of the signs of radicalization. Here are some general signs to look out for:
+
+1. **Behavioral Changes**: Watch for sudden or severe changes in mood or personality. This could include withdrawing from family and friends, expressing new anger or frustration, or being secretive about online activities.
+
+2. **Online Activity**: Take note of increased use of the internet or involvement in online communities, particularly those that discuss extremist ideologies or share politically charged content.
+
+3. **Language and Phrases**: Be on the lookout for the use of new language or phrases that seem out of character, including extremist metaphors or slogans.
+
+4. **Ideological Shift**: If your teenager shows unexpected interest in political ideologies, radical views, or a specific social movement, particularly those promoting intolerance or violence, this could be a warning sign.
+
+5. **Isolation**: Radicalization can lead individuals to distance themselves from friends who do not share the same beliefs or from supportive family environments.
+
+6. **Symbols and Media**: Sudden interest in certain symbols, music, or videos associated with radical groups or ideologies might indicate a shift in beliefs.
+
+Given the context, disinformation and radicalization pipelines on platforms like YouTube are areas of concern, so monitoring media consumption and having open discussions about the content can be beneficial.
+
+Remember, it's crucial to approach the situation with understanding and open communication. Making your teenager feel safe to talk about their concerns and interests without judgment can be key to addressing any potential issues.
+
+If you have any specific concerns or need further guidance, please feel free to share.
+============================================================
+
+📝 Query: I found my son watching videos about the 'Great Replacement'. What should I do?
+------------------------------
+❤️ Empathy Score: 0.9862762689590454
+😫 Distress Score: 0.9727627635002136
+😡 Dominant Emotion: fear
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: [1908.08313] Auditing Radicalization Pathways on YouTube - arXiv, Severity: Me...
+   2. [trend] Disinformation Trend: Exploring the radicalization pipeline on Youtube., Severity: Medium. Common Ph...
+   3. [trend] Disinformation Trend: Theo Triantafyllidis Presents: Radicalization Pipeline - YouTube, Severity: Me...
+
+🤖 Response:
+I understand how finding your son watching these videos might feel alarming and worrying. It's important to address this with care and understanding. 
+
+From the context, we don't have specific details about a trend called the "Great Replacement," but it seems related to disinformation pathways that explore radicalization, similar to those discussed with YouTube videos. These pathways can sometimes present misleading or extreme views.
+
+Here's what you can do:
+
+1. **Open a Dialogue**: Approach your son with curiosity rather than judgment. Ask him what caught his interest about these videos and listen to him. Understanding his perspective is crucial.
+
+2. **Educate and Inform**: Gently introduce facts and information from credible sources that counteract the disinformation. Encourage critical thinking by discussing how to identify credible information online.
+
+3. **Be Supportive**: Reassure him that you're there for him and interested in his thoughts and feelings. Creating a safe space for conversation can help him feel comfortable discussing sensitive topics with you in the future.
+
+4. **Consult Resources**: If you're worried about this progressing, there might be organizations or professionals who specialize in preventing radicalization and can offer guidance.
+
+Remember, this is a process, and it's great that you're taking steps to address it early. If you need more specific advice or support, consider reaching out to local resources that deal with online safety and radicalization prevention.
+============================================================
+
+📝 Query: How can I talk to my daughter who is angry at the government?
+------------------------------
+❤️ Empathy Score: 0.976391613483429
+😫 Distress Score: 0.9879888296127319
+😡 Dominant Emotion: anger
+
+📚 Sources Found: 3
+   1. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Teacher tried to debate me today. She couldn't...
+   2. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Why do adults always say 'you'll understand wh...
+   3. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Family dinner was awkward again. They don't ev...
+
+🤖 Response:
+I understand that you're feeling upset about the situation, and it's important to approach this carefully and compassionately. It seems like your daughter is expressing some frustration through her social media posts. For instance, her posts demonstrate a desire for open dialogue and understanding, especially when she mentions experiences at school and family dinners.
+
+Here are some steps you might consider to open up a conversation:
+
+1. **Acknowledge Her Feelings**: Start by acknowledging that you understand she is feeling frustrated and that her perspectives are important to you. You might say something like, "I've noticed you've been feeling frustrated with certain issues, and I want to understand your perspective better."
+
+2. **Open Dialogue**: Offer a safe space for her to express her thoughts. Let her know that you're ready to listen without judgment. This can be a powerful way to show that you value her opinions.
+
+3. **Engage Constructively**: Encourage critical thinking and discussions. Since she mentions a lack of critical thinking in schools, perhaps engage in debates or discussions where her ideas can be explored and respected.
+
+4. **Explore Together**: Suggest researching topics together. This can show that you're interested in what she cares about and provide an opportunity to both learn and discuss complex topics.
+
+5. **Stay Calm and Patient**: It’s natural to feel a range of emotions, but maintaining a calm demeanor will help keep the discussion productive and respectful.
+
+I hope these suggestions help in opening a constructive and empathetic dialogue with your daughter.
+============================================================
+
+📝 Query: Tell me about the 'Incel' ideology trends.
+------------------------------
+❤️ Empathy Score: 0.9648853540420532
+😫 Distress Score: 0.9355441331863403
+😡 Dominant Emotion: neutral
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: Involuntary Celibacy: A Review of Incel Ideology and ..., Severity: Medium. Co...
+   2. [trend] Disinformation Trend: Incels (Involuntary celibates), Severity: Medium. Common Phrases: ...
+   3. [trend] Disinformation Trend: Incel, Severity: Medium. Common Phrases: ...
+
+🤖 Response:
+I understand that you might be concerned about the trends related to "Incel" ideology. Let me provide a bit more information on this topic, and then we can talk about any specific worries you might have.
+
+In the context provided, "Incel" or involuntary celibacy ideology is noted as having a medium severity as a disinformation trend. The ideology often centers around feelings of loneliness and frustration about being unable to find a romantic or sexual partner. This can lead to harmful beliefs and behaviors if individuals find themselves in online communities that validate negative emotions with extreme or harmful narratives.
+
+If you're worried about this affecting someone you care about, I suggest having open and supportive conversations. Encourage them to talk about their feelings and interests, and gently steer them toward positive communities and hobbies. It's important to let them know they're not alone and have your support.
+
+If this answer doesn’t fully address what you’re worried about, feel free to share more details or ask further questions. I'm here to help.
+============================================================

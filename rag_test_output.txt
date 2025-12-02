@@ -1,0 +1,106 @@
+DEBUG: OpenAI API Key loaded: True
+🧪 Testing RAG Chat Quality
+
+============================================================
+
+📝 Query: What are the common signs of radicalization in teenagers?
+------------------------------
+❤️ Empathy Score: 0.9898616075515747
+😫 Distress Score: 0.9891290664672852
+😡 Dominant Emotion: neutral
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: Exploring the radicalization pipeline on Youtube., Severity: Medium. Common Ph...
+   2. [trend] Disinformation Trend: Theo Triantafyllidis Presents: Radicalization Pipeline - YouTube, Severity: Me...
+   3. [trend] Disinformation Trend: [1908.08313] Auditing Radicalization Pathways on YouTube - arXiv, Severity: Me...
+
+🤖 Response:
+It sounds like you're concerned about radicalization, and it's completely understandable to feel worried about the well-being of young people in your care. Radicalization can be a complex process, but there are some common signs you can watch for:
+
+1. **Isolation**: If a teenager starts withdrawing from friends and family, it could be a sign of concern.
+   
+2. **Changes in Behavior**: Look out for drastic changes in attitudes, interests, or behavior, especially if they involve intense political or ideological engagement.
+
+3. **Online Activity**: Pay attention to what content they're consuming online, especially if they're frequently visiting sites or following figures known for extremist ideologies.
+
+4. **New Language/Jargon**: They might start using new terms or phrases that are specific to certain extremist groups or ideologies.
+
+5. **Expressing Extreme Opinions**: An increased level of intolerance or extreme opinions about political, religious, or social issues can be a sign.
+
+6. **Changes in Appearance**: Abrupt changes in style or grooming in line with extremist group styles could also be indicative.
+
+Remember, it's important to approach the situation with empathy and open communication. Try to engage in a non-judgmental dialogue with the teenager to understand their thoughts and feelings better. Staying connected and creating a space where they feel safe to express themselves is crucial. If you feel overwhelmed, consider reaching out to a professional for advice or support. You're not alone in this, and there are resources available to help.
+============================================================
+
+📝 Query: I found my son watching videos about the 'Great Replacement'. What should I do?
+------------------------------
+❤️ Empathy Score: 0.9862762689590454
+😫 Distress Score: 0.9727627635002136
+😡 Dominant Emotion: fear
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: [1908.08313] Auditing Radicalization Pathways on YouTube - arXiv, Severity: Me...
+   2. [trend] Disinformation Trend: Exploring the radicalization pipeline on Youtube., Severity: Medium. Common Ph...
+   3. [trend] Disinformation Trend: Theo Triantafyllidis Presents: Radicalization Pipeline - YouTube, Severity: Me...
+
+🤖 Response:
+I'm sorry to hear that you're facing this challenging situation with your son, and it's understandable to feel concerned and fearful about it. The "Great Replacement" is a topic often associated with disinformation and potentially radicalizing content. It's important to approach this situation with care and empathy.
+
+Here are some steps you can take:
+
+1. **Open a Dialogue**: Start by gently asking your son about the videos he's watching and what interests him about them. Show genuine curiosity and listen to his thoughts without judgment, which can help you understand his perspective better.
+
+2. **Educate and Encourage Critical Thinking**: Provide your son with information from reliable sources that can counter any misleading narratives he might encounter online. Encourage him to question and critically analyze the content he consumes.
+
+3. **Discuss Online Content Together**: Suggest watching some videos together and discuss what you see. This can be an opportunity to guide him in recognizing biased or misleading information.
+
+4. **Set Boundaries and Monitor**: Establish clear boundaries for internet use that include time limits and acceptable types of content. Use parental controls if necessary, but also make sure to maintain an open line of communication.
+
+5. **Seek Support**: If you're feeling overwhelmed, consider reaching out to a mental health professional or community resources that specialize in these issues for further guidance.
+
+Remember, you're not alone in this, and taking steps to support your son while fostering a trusting relationship can be very effective in navigating through this. If you need more information or resources, please feel free to reach out.
+============================================================
+
+📝 Query: How can I talk to my daughter who is angry at the government?
+------------------------------
+❤️ Empathy Score: 0.976391613483429
+😫 Distress Score: 0.9879888296127319
+😡 Dominant Emotion: anger
+
+📚 Sources Found: 3
+   1. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Teacher tried to debate me today. She couldn't...
+   2. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Why do adults always say 'you'll understand wh...
+   3. [social_post] Social Media Post by Subject test-sarah-1 on Twitter: Family dinner was awkward again. They don't ev...
+
+🤖 Response:
+It sounds like you're going through a challenging time with your daughter. It's normal to feel upset when someone you care about expresses anger, especially towards something as significant as the government. It's important to approach this with patience and understanding.
+
+First, acknowledge her feelings. Let her know that you recognize her anger and it's okay to feel that way. Saying something like, "I can see that you're really frustrated with what's happening, and I want to understand more about why you feel this way," can open up a dialogue.
+
+Encourage her to express her thoughts openly without feeling judged. Sometimes just having a space to talk can diffuse some of the tension. You can ask questions like, "What specific issues are bothering you?" or "How do you think things could be different?" This shows that you're interested in her perspective and could help in having a more constructive conversation.
+
+It might also help to discuss and identify shared values, even if you disagree on certain points. Finding common ground can strengthen your relationship and foster more positive discussions in the future.
+
+If these conversations continue to be challenging, consider suggesting seeking additional support, whether through counseling or community groups that offer a platform for young people to express their views safely.
+
+Remember, staying calm and open-minded yourself will help set a positive tone for these discussions. You're doing your best, and it's okay to take small steps.
+============================================================
+
+📝 Query: Tell me about the 'Incel' ideology trends.
+------------------------------
+❤️ Empathy Score: 0.9648853540420532
+😫 Distress Score: 0.9355441331863403
+😡 Dominant Emotion: neutral
+
+📚 Sources Found: 3
+   1. [trend] Disinformation Trend: Involuntary Celibacy: A Review of Incel Ideology and ..., Severity: Medium. Co...
+   2. [trend] Disinformation Trend: Incels (Involuntary celibates), Severity: Medium. Common Phrases: ...
+   3. [trend] Disinformation Trend: Incel, Severity: Medium. Common Phrases: ...
+
+🤖 Response:
+I'm here to help you understand and navigate this situation. The mention of "Incel" ideology can be concerning, and it's important to address any feelings of worry you might have right now. The so-called "Incel" movement is associated with disillusionment around involuntary celibacy, and individuals within this trend often express negative emotions and views towards dating and society.
+
+This trend has been rated with a medium severity in the information you provided, which means it holds some level of influence but may not be highly pervasive or dangerous in every case. It often includes common phrases and themes of frustration and negativity about relationships. 
+
+Please remember, if you ever sense that someone is at risk, seeking support from mental health professionals or community resources is crucial. Ensuring open and empathetic communication with loved ones can also foster understanding and provide support to those who might be exposed to such ideologies. If you feel overwhelmed, don't hesitate to reach out for help for yourself as well. You are not alone in this.
+============================================================

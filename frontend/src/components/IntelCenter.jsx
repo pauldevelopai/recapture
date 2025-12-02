@@ -366,30 +366,33 @@ export default function IntelCenter() {
                         </select>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
-                        <div className="card">
-                            <h3>Recent Activity Log</h3>
-                            <div className="list">
-                                {logs.slice((logPage - 1) * itemsPerPage, logPage * itemsPerPage).map(log => (
-                                    <div key={log.id} style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-                                        <div>
-                                            <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{log.platform}</div>
-                                            <div className="text-muted" style={{ fontSize: '0.9rem' }}>{new Date(log.timestamp).toLocaleString()}</div>
+                        <div className="space-y-6">
+                            {/* Subject Activity Log */}
+                            <div className="card">
+                                <h3>Subject Activity Log</h3>
+                                <div className="list">
+                                    {logs.slice((logPage - 1) * itemsPerPage, logPage * itemsPerPage).map(log => (
+                                        <div key={log.id} style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+                                            <div>
+                                                <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{log.platform}</div>
+                                                <div className="text-muted" style={{ fontSize: '0.9rem' }}>{new Date(log.timestamp).toLocaleString()}</div>
+                                            </div>
+                                            <div style={{ padding: '0.25rem 0.75rem', borderRadius: '1rem', background: log.risk_score > 0.5 ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)', color: log.risk_score > 0.5 ? 'var(--danger)' : 'var(--success)', fontSize: '0.9rem', fontWeight: 'bold' }}>
+                                                Risk: {(log.risk_score * 10).toFixed(1)}
+                                            </div>
                                         </div>
-                                        <div style={{ padding: '0.25rem 0.75rem', borderRadius: '1rem', background: log.risk_score > 0.5 ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)', color: log.risk_score > 0.5 ? 'var(--danger)' : 'var(--success)', fontSize: '0.9rem', fontWeight: 'bold' }}>
-                                            Risk: {(log.risk_score * 10).toFixed(1)}
-                                        </div>
-                                    </div>
-                                ))}
-                                {logs.length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '1rem' }}>No activity recorded yet.</p>}
+                                    ))}
+                                    {logs.length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '1rem' }}>No activity recorded yet.</p>}
 
-                                {/* Log Pagination */}
-                                {logs.length > itemsPerPage && (
-                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', padding: '1rem' }}>
-                                        <button onClick={() => setLogPage(p => Math.max(1, p - 1))} disabled={logPage === 1} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Prev</button>
-                                        <span style={{ fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>{logPage} / {Math.ceil(logs.length / itemsPerPage)}</span>
-                                        <button onClick={() => setLogPage(p => Math.min(Math.ceil(logs.length / itemsPerPage), p + 1))} disabled={logPage >= Math.ceil(logs.length / itemsPerPage)} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Next</button>
-                                    </div>
-                                )}
+                                    {/* Log Pagination */}
+                                    {logs.length > itemsPerPage && (
+                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', padding: '1rem' }}>
+                                            <button onClick={() => setLogPage(p => Math.max(1, p - 1))} disabled={logPage === 1} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Prev</button>
+                                            <span style={{ fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>{logPage} / {Math.ceil(logs.length / itemsPerPage)}</span>
+                                            <button onClick={() => setLogPage(p => Math.min(Math.ceil(logs.length / itemsPerPage), p + 1))} disabled={logPage >= Math.ceil(logs.length / itemsPerPage)} style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Next</button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -429,11 +432,39 @@ export default function IntelCenter() {
                         </div>
                     </div>
 
+                    {/* System Status Summary */}
+                    <div className="card" style={{ marginBottom: '2rem', background: 'rgba(99, 102, 241, 0.05)', border: '1px solid var(--primary)' }}>
+                        <h3>System Status</h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                            <div>
+                                <div className="text-muted text-sm">Active Sources</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{sources.length}</div>
+                            </div>
+                            <div>
+                                <div className="text-muted text-sm">Monitored Topics</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{topics.length}</div>
+                            </div>
+                            <div>
+                                <div className="text-muted text-sm">Pending Items</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{content.filter(c => c.status === 'pending').length}</div>
+                            </div>
+                            <div>
+                                <div className="text-muted text-sm">Total Knowledge Base</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{modelStats.total_documents}</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                         <h2>Data Inbox</h2>
-                        <button className="btn btn-primary" onClick={handleRunPipeline} disabled={loadingPipeline} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} Run Pipeline
-                        </button>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <button className="btn" onClick={fetchContent} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <RefreshCw size={18} /> Refresh
+                            </button>
+                            <button className="btn btn-primary" onClick={handleRunPipeline} disabled={loadingPipeline} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} Run Pipeline
+                            </button>
+                        </div>
                     </div>
 
                     <div className="inbox-list">
@@ -451,7 +482,7 @@ export default function IntelCenter() {
                                 </div>
                             </div>
                         ))}
-                        {content.filter(c => c.status === 'pending').length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '2rem' }}>No pending items.</p>}
+                        {content.filter(c => c.status === 'pending').length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '2rem' }}>No pending items to review.</p>}
                     </div>
                 </div>
             )}
