@@ -8,7 +8,7 @@ const ListeningFeed = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
-    const itemsPerPage = 10;
+    const itemsPerPage = 5;
     const feedEndRef = useRef(null);
 
     // Poll for updates when listening
@@ -166,8 +166,8 @@ const ListeningFeed = () => {
                             <div className="flex justify-between items-start mb-4">
                                 <div className="flex items-center gap-3">
                                     <span className={`text-[10px] font-bold px-2 py-1 rounded-md border uppercase tracking-wider ${item.source_platform === '4chan' ? 'bg-green-900/20 text-green-400 border-green-500/30' :
-                                            item.source_platform === 'reddit' ? 'bg-orange-900/20 text-orange-400 border-orange-500/30' :
-                                                'bg-gray-700 text-gray-300 border-gray-600'
+                                        item.source_platform === 'reddit' ? 'bg-orange-900/20 text-orange-400 border-orange-500/30' :
+                                            'bg-gray-700 text-gray-300 border-gray-600'
                                         }`}>
                                         {item.source_platform}
                                     </span>

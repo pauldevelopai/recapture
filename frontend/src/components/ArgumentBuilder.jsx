@@ -6,6 +6,7 @@ export default function ArgumentBuilder() {
     const [context, setContext] = useState('');
     const [profiles, setProfiles] = useState([]);
     const [selectedProfileId, setSelectedProfileId] = useState('');
+    const [authorities, setAuthorities] = useState([]);
     const [generatedArgument, setGeneratedArgument] = useState(null);
     const [loading, setLoading] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -14,12 +15,30 @@ export default function ArgumentBuilder() {
         fetchProfiles();
     }, []);
 
+    useEffect(() => {
+        if (selectedProfileId) {
+            fetchAuthorities(selectedProfileId);
+        } else {
+            setAuthorities([]);
+        }
+    }, [selectedProfileId]);
+
     const fetchProfiles = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/profiles');
+            const res = await axios.get('http://127.0.0.1:8000/api/subjects');
             setProfiles(res.data);
         } catch (err) {
             console.error("Error fetching profiles:", err);
+        }
+    };
+
+    const fetchAuthorities = async (subjectId) => {
+        try {
+            const res = await axios.get(`http://127.0.0.1:8000/api/subjects/${subjectId}/authorities`);
+            setAuthorities(res.data);
+        } catch (err) {
+            console.error("Error fetching authorities:", err);
+            setAuthorities([]);
         }
     };
 
@@ -92,6 +111,37 @@ export default function ArgumentBuilder() {
                 {selectedProfileId && (
                     <div style={{ padding: '0.75rem', background: 'rgba(99, 102, 241, 0.1)', borderRadius: 'var(--radius)', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--primary)' }}>
                         <strong><User size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Profile Context Active:</strong> The AI will use this person's risk level, recent history, and trusted authorities to tailor the argument.
+                    </div>
+                )}
+
+                {selectedProfileId && authorities.length > 0 && (
+                    <div style={{ marginBottom: '1rem' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+                            Trusted Authorities ({authorities.length})
+                        </label>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            {authorities.map((auth) => (
+                                <div key={auth.id} style={{
+                                    padding: '0.75rem',
+                                    background: 'rgba(34, 197, 94, 0.1)',
+                                    borderRadius: 'var(--radius)',
+                                    border: '1px solid rgba(34, 197, 94, 0.3)',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center'
+                                }}>
+                                    <div>
+                                        <div style={{ fontWeight: 'bold', color: 'var(--success)' }}>{auth.name}</div>
+                                        <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                                            {auth.role} • {auth.relation}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <small className="text-muted" style={{ display: 'block', marginTop: '0.5rem' }}>
+                            These authorities will be referenced in the generated argument to build trust.
+                        </small>
                     </div>
                 )}
 

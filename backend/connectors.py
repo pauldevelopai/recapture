@@ -70,7 +70,9 @@ class FourChanConnector(SocialConnector):
                         
                         # Clean HTML tags from comment
                         com = thread.get('com', '')
-                        clean_text = re.sub('<[^<]+?>', '', html.unescape(com))
+                        # Replace <br> with newlines first
+                        text_with_newlines = re.sub(r'<br\s*/?>', '\n', html.unescape(com))
+                        clean_text = re.sub('<[^<]+?>', '', text_with_newlines)
                         
                         # 4chan images
                         img_url = ""
