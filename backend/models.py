@@ -50,6 +50,7 @@ class ContentLog(BaseModel):
     timestamp: Optional[str] = None # ISO format
     analysis_id: Optional[str] = None
     detected_trends: List[str] = []
+    risk_score: float = 0.0
 
 class Source(BaseModel):
     id: Optional[str] = None

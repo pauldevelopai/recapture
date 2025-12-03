@@ -49,11 +49,17 @@ Be specific and nuanced. Look for patterns in how they think and express themsel
                     "content": f"Analyze this person's personality based on their posts:\n\n{posts_text}"
                 }
             ],
-            response_format={"type": "json_object"},
             temperature=0.4
         )
         
-        result = json.loads(response.choices[0].message.content)
+        content = response.choices[0].message.content
+        # Clean up code blocks if present
+        if "```json" in content:
+            content = content.split("```json")[1].split("```")[0].strip()
+        elif "```" in content:
+            content = content.split("```")[1].split("```")[0].strip()
+            
+        result = json.loads(content)
         return result
         
     except Exception as e:
@@ -97,11 +103,17 @@ This will be used to simulate their writing style accurately."""
                     "content": posts_text
                 }
             ],
-            response_format={"type": "json_object"},
             temperature=0.3
         )
         
-        result = json.loads(response.choices[0].message.content)
+        content = response.choices[0].message.content
+        # Clean up code blocks if present
+        if "```json" in content:
+            content = content.split("```json")[1].split("```")[0].strip()
+        elif "```" in content:
+            content = content.split("```")[1].split("```")[0].strip()
+            
+        result = json.loads(content)
         return result
         
     except Exception as e:
@@ -137,11 +149,17 @@ Be specific and capture nuance in their beliefs."""
                     "content": posts_text
                 }
             ],
-            response_format={"type": "json_object"},
             temperature=0.3
         )
         
-        result = json.loads(response.choices[0].message.content)
+        content = response.choices[0].message.content
+        # Clean up code blocks if present
+        if "```json" in content:
+            content = content.split("```json")[1].split("```")[0].strip()
+        elif "```" in content:
+            content = content.split("```")[1].split("```")[0].strip()
+            
+        result = json.loads(content)
         return result.get('interests', []), result.get('beliefs', {})
         
     except Exception as e:
@@ -464,11 +482,17 @@ SIMULATED RESPONSE:
 Evaluate the effectiveness of this argument."""
                 }
             ],
-            response_format={"type": "json_object"},
             temperature=0.3
         )
         
-        result = json.loads(response.choices[0].message.content)
+        content = response.choices[0].message.content
+        # Clean up code blocks if present
+        if "```json" in content:
+            content = content.split("```json")[1].split("```")[0].strip()
+        elif "```" in content:
+            content = content.split("```")[1].split("```")[0].strip()
+            
+        result = json.loads(content)
         return result.get('effectiveness_score', 50.0), result.get('suggestions', [])
         
     except Exception as e:

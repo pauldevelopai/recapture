@@ -22,7 +22,7 @@ export default function Dashboard() {
 
     const fetchProfiles = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/profiles');
+            const res = await axios.get('http://127.0.0.1:8000/api/subjects');
             setProfiles(res.data);
             if (res.data.length > 0) setSelectedProfile(res.data[0].id);
         } catch (e) { console.error("Failed to fetch profiles", e); }
@@ -31,7 +31,7 @@ export default function Dashboard() {
     const fetchLogs = async (pid) => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/api/profiles/${pid}/logs`);
+            const res = await axios.get(`http://127.0.0.1:8000/api/subjects/${pid}/logs`);
             setLogs(res.data);
         } catch (e) { console.error("Failed to fetch logs", e); }
         finally { setLoading(false); }
