@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { Shield, AlertTriangle, Radio, Pause, Play, RefreshCw, ExternalLink } from 'lucide-react';
 
 const ListeningFeed = () => {
+    const { t } = useLanguage();
     const [isListening, setIsListening] = useState(false);
     const [feed, setFeed] = useState([]);
     const [stats, setStats] = useState({ total: 0, threats: 0 });
@@ -98,9 +100,9 @@ const ListeningFeed = () => {
                         <Radio className="w-5 h-5" />
                     </div>
                     <div>
-                        <h3 className="font-semibold text-white">Deep Listening Feed</h3>
+                        <h3 className="font-semibold text-white">{t('listening.title')}</h3>
                         <p className="text-xs text-gray-400">
-                            {isListening ? 'Monitoring active channels...' : 'Monitoring paused'}
+                            {isListening ? t('listening.monitoring_active') : t('listening.monitoring_paused')}
                         </p>
                     </div>
                 </div>
@@ -108,7 +110,7 @@ const ListeningFeed = () => {
                 <div className="flex items-center gap-3">
                     <div className="flex gap-4 mr-4 text-sm">
                         <div className="flex flex-col items-end">
-                            <span className="text-gray-500 text-xs">Total Scanned</span>
+                            <span className="text-gray-500 text-xs">{t('listening.total_scanned')}</span>
                             <span className="text-white font-mono">{stats.total}</span>
                         </div>
                     </div>
@@ -116,7 +118,7 @@ const ListeningFeed = () => {
                     <button
                         onClick={() => fetchFeed(currentPage)}
                         className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors"
-                        title="Refresh Feed"
+                        title={t('listening.refresh_feed')}
                     >
                         <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
                     </button>
@@ -130,11 +132,11 @@ const ListeningFeed = () => {
                     >
                         {isListening ? (
                             <>
-                                <Pause className="w-4 h-4" /> Stop
+                                <Pause className="w-4 h-4" /> {t('listening.stop')}
                             </>
                         ) : (
                             <>
-                                <Play className="w-4 h-4" /> Start Listening
+                                <Play className="w-4 h-4" /> {t('listening.start')}
                             </>
                         )}
                     </button>
@@ -152,7 +154,7 @@ const ListeningFeed = () => {
                 {feed.length === 0 && !isLoading ? (
                     <div className="h-full flex flex-col items-center justify-center text-gray-500 gap-3">
                         <Radio className="w-12 h-12 opacity-20" />
-                        <p>No activity detected. Start listening to monitor channels.</p>
+                        <p>{t('listening.no_activity')}</p>
                     </div>
                 ) : (
                     feed.map((item) => (
@@ -179,7 +181,7 @@ const ListeningFeed = () => {
                                 {item.matched_trend_id && (
                                     <span className={`text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1.5 uppercase tracking-wider ${getSeverityColor(item.severity)}`}>
                                         <AlertTriangle className="w-3 h-3" />
-                                        {item.severity} Risk
+                                        {item.severity} {t('listening.risk')}
                                     </span>
                                 )}
                             </div>
@@ -198,7 +200,7 @@ const ListeningFeed = () => {
                                     )}
                                     {item.url && (
                                         <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1.5 hover:underline">
-                                            <ExternalLink className="w-3 h-3" /> Source Link
+                                            <ExternalLink className="w-3 h-3" /> {t('listening.source_link')}
                                         </a>
                                     )}
                                 </div>
@@ -210,15 +212,15 @@ const ListeningFeed = () => {
                                                 headers: { 'Content-Type': 'application/json' },
                                                 body: JSON.stringify(item)
                                             });
-                                            alert("Sent to Training Queue!");
+                                            alert(t('listening.sent_to_queue'));
                                         } catch (e) {
                                             console.error(e);
-                                            alert("Failed to send to training.");
+                                            alert(t('listening.failed_to_send'));
                                         }
                                     }}
                                     className="text-xs bg-blue-600 text-white border border-blue-500 px-4 py-2 rounded-lg hover:bg-blue-500 transition-all shadow-sm hover:shadow flex items-center gap-2 font-medium"
                                 >
-                                    <Shield className="w-3.5 h-3.5" /> Promote to Intel
+                                    <Shield className="w-3.5 h-3.5" /> {t('listening.promote')}
                                 </button>
                             </div>
                         </div>
@@ -234,11 +236,11 @@ const ListeningFeed = () => {
                     disabled={currentPage === 1 || isLoading}
                     className="px-4 py-2 text-sm font-medium bg-gray-700 text-white rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border border-gray-600 flex items-center gap-2"
                 >
-                    &larr; Previous
+                    &larr; {t('listening.previous')}
                 </button>
 
                 <span className="text-sm text-gray-300 font-medium bg-gray-900 px-3 py-1 rounded border border-gray-700">
-                    Page {currentPage} of {totalPages || 1}
+                    {t('listening.page')} {currentPage} of {totalPages || 1}
                 </span>
 
                 <button
@@ -246,7 +248,7 @@ const ListeningFeed = () => {
                     disabled={currentPage >= totalPages || isLoading}
                     className="px-4 py-2 text-sm font-medium bg-gray-700 text-white rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border border-gray-600 flex items-center gap-2"
                 >
-                    Next &rarr;
+                    {t('listening.next')} &rarr;
                 </button>
             </div>
         </div>

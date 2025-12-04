@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserPlus, User, AlertTriangle, Plus, X, Search, LayoutGrid, Trash2 } from 'lucide-react';
@@ -7,6 +8,7 @@ import Scanner from './Scanner';
 import SubjectDiscovery from './SubjectDiscovery';
 
 export default function SubjectsView() {
+    const { t } = useLanguage();
     const navigate = useNavigate();
     const [subjects, setSubjects] = useState([]);
     const [activeTab, setActiveTab] = useState('profiles'); // 'profiles', 'scanner', or 'discovery'
@@ -89,12 +91,12 @@ export default function SubjectsView() {
         <div className="subjects-page">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <div>
-                    <h1>Subjects</h1>
-                    <p className="text-muted">Manage the profiles of the young people you are protecting. Create Digital Clones to test arguments.</p>
+                    <h1>{t('subjects.title')}</h1>
+                    <p className="text-muted">{t('subjects.subtitle')}</p>
                 </div>
                 {activeTab === 'profiles' && (
                     <button onClick={() => setShowForm(!showForm)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <UserPlus size={18} /> Add Subject
+                        <UserPlus size={18} /> {t('subjects.add_subject')}
                     </button>
                 )}
             </div>
@@ -113,7 +115,7 @@ export default function SubjectsView() {
                             cursor: 'pointer'
                         }}
                     >
-                        Profiles
+                        {t('subjects.tabs.profiles')}
                     </button>
                     <button
                         onClick={() => setActiveTab('scanner')}
@@ -126,7 +128,7 @@ export default function SubjectsView() {
                             cursor: 'pointer'
                         }}
                     >
-                        Digital Diet Scanner
+                        {t('subjects.tabs.scanner')}
                     </button>
                     <button
                         onClick={() => setActiveTab('discovery')}
@@ -139,7 +141,7 @@ export default function SubjectsView() {
                             cursor: 'pointer'
                         }}
                     >
-                        Subject Discovery
+                        {t('subjects.tabs.discovery')}
                     </button>
                 </div>
             </div>
@@ -150,18 +152,18 @@ export default function SubjectsView() {
                 <>
                     {showForm && (
                         <div className="card" style={{ marginBottom: '2rem', border: '1px solid var(--primary)' }}>
-                            <h3>New Subject</h3>
+                            <h3>{t('subjects.form.new_subject')}</h3>
                             <form onSubmit={handleCreate} style={{ display: 'grid', gap: '1rem' }}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                     <input
-                                        placeholder="Name"
+                                        placeholder={t('subjects.form.name')}
                                         value={newSubject.name}
                                         onChange={e => setNewSubject({ ...newSubject, name: e.target.value })}
                                         required
                                     />
                                     <input
                                         type="number"
-                                        placeholder="Age"
+                                        placeholder={t('subjects.form.age')}
                                         value={newSubject.age}
                                         onChange={e => setNewSubject({ ...newSubject, age: e.target.value })}
                                         required
@@ -172,18 +174,18 @@ export default function SubjectsView() {
                                     onChange={e => setNewSubject({ ...newSubject, risk_level: e.target.value })}
                                     style={{ padding: '0.75rem', borderRadius: 'var(--radius)', background: 'var(--surface)', color: 'var(--text)', border: '1px solid var(--border)' }}
                                 >
-                                    <option value="Low">Low Risk</option>
-                                    <option value="Medium">Medium Risk</option>
-                                    <option value="High">High Risk</option>
+                                    <option value="Low">{t('subjects.form.low_risk')}</option>
+                                    <option value="Medium">{t('subjects.form.medium_risk')}</option>
+                                    <option value="High">{t('subjects.form.high_risk')}</option>
                                 </select>
                                 <textarea
-                                    placeholder="Notes / Context"
+                                    placeholder={t('subjects.form.notes')}
                                     value={newSubject.notes}
                                     onChange={e => setNewSubject({ ...newSubject, notes: e.target.value })}
                                 />
 
                                 <div>
-                                    <h4 style={{ marginBottom: '1rem' }}>Social Media Accounts (Optional)</h4>
+                                    <h4 style={{ marginBottom: '1rem' }}>{t('subjects.form.social_accounts')}</h4>
                                     {socialFeeds.map((feed, idx) => (
                                         <div key={idx} style={{ display: 'grid', gridTemplateColumns: '150px 1fr 1fr auto', gap: '0.5rem', marginBottom: '0.5rem' }}>
                                             <select
@@ -197,12 +199,12 @@ export default function SubjectsView() {
                                                 <option value="Facebook">Facebook</option>
                                             </select>
                                             <input
-                                                placeholder="Username"
+                                                placeholder={t('subjects.form.username')}
                                                 value={feed.username}
                                                 onChange={e => updateFeed(idx, 'username', e.target.value)}
                                             />
                                             <input
-                                                placeholder="Profile URL (optional)"
+                                                placeholder={t('subjects.form.profile_url')}
                                                 value={feed.profile_url}
                                                 onChange={e => updateFeed(idx, 'profile_url', e.target.value)}
                                             />
@@ -217,11 +219,11 @@ export default function SubjectsView() {
                                     ))}
                                     <button type="button" onClick={addFeedInput} style={{ marginTop: '0.5rem', background: 'var(--border)' }}>
                                         <Plus size={16} style={{ marginRight: '0.5rem' }} />
-                                        Add Another Account
+                                        {t('subjects.form.add_account')}
                                     </button>
                                 </div>
 
-                                <button type="submit">Save Subject</button>
+                                <button type="submit">{t('subjects.form.save')}</button>
                             </form>
                         </div>
                     )}
@@ -243,7 +245,7 @@ export default function SubjectsView() {
                                         </div>
                                         <div>
                                             <h3 style={{ margin: 0 }}>{subject.name}</h3>
-                                            <span className="text-muted">{subject.age} years old</span>
+                                            <span className="text-muted">{subject.age} {t('subjects.card.years_old')}</span>
                                         </div>
                                     </div>
                                     <span style={{
@@ -253,10 +255,10 @@ export default function SubjectsView() {
                                         background: subject.risk_level === 'High' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)',
                                         color: subject.risk_level === 'High' ? 'var(--danger)' : 'var(--success)'
                                     }}>
-                                        {subject.risk_level} Risk
+                                        {subject.risk_level} {t('listening.risk')}
                                     </span>
                                 </div>
-                                <p className="text-muted">{subject.notes || "No notes added."}</p>
+                                <p className="text-muted">{subject.notes || t('subjects.card.no_notes')}</p>
                             </div>
                         ))}
                     </div>

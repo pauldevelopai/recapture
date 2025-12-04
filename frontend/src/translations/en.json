@@ -73,5 +73,52 @@
             "title": "Knowledge Base Sources",
             "unknown_type": "Unknown Type"
         }
+    },
+    "listening": {
+        "title": "Deep Listening Feed",
+        "monitoring_active": "Monitoring active channels...",
+        "monitoring_paused": "Monitoring paused",
+        "total_scanned": "Total Scanned",
+        "refresh_feed": "Refresh Feed",
+        "stop": "Stop",
+        "start": "Start Listening",
+        "no_activity": "No activity detected. Start listening to monitor channels.",
+        "risk": "Risk",
+        "source_link": "Source Link",
+        "promote": "Promote to Intel",
+        "sent_to_queue": "Sent to Training Queue!",
+        "failed_to_send": "Failed to send to training.",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page"
+    },
+    "subjects": {
+        "title": "Subjects",
+        "subtitle": "Manage the profiles of the young people you are protecting. Create Digital Clones to test arguments.",
+        "add_subject": "Add Subject",
+        "tabs": {
+            "profiles": "Profiles",
+            "scanner": "Digital Diet Scanner",
+            "discovery": "Subject Discovery"
+        },
+        "form": {
+            "new_subject": "New Subject",
+            "name": "Name",
+            "age": "Age",
+            "risk_level": "Risk Level",
+            "low_risk": "Low Risk",
+            "medium_risk": "Medium Risk",
+            "high_risk": "High Risk",
+            "notes": "Notes / Context",
+            "social_accounts": "Social Media Accounts (Optional)",
+            "username": "Username",
+            "profile_url": "Profile URL (optional)",
+            "add_account": "Add Another Account",
+            "save": "Save Subject"
+        },
+        "card": {
+            "years_old": "years old",
+            "no_notes": "No notes added."
+        }
     }
 }
