@@ -1,0 +1,77 @@
+{
+    "app": {
+        "title": "Recapture"
+    },
+    "dashboard": {
+        "title": "Success Tracking",
+        "subtitle": "Track the progress of recapturing and de-radicalization efforts.",
+        "no_profiles": "No profiles found",
+        "total_scans": "Total Scans",
+        "avg_risk": "Avg Risk Level",
+        "progress": "Progress",
+        "recent_activity": "Recent Activity Log",
+        "loading_activity": "Loading activity...",
+        "content_scan": "Content Scan",
+        "risk_label": "Risk:",
+        "no_activity": "No activity recorded for this profile."
+    },
+    "risk": {
+        "low": "Low",
+        "moderate": "Moderate",
+        "high": "High"
+    },
+    "intel": {
+        "title": "Intel Center",
+        "subtitle": "Unified command for threat intelligence, monitoring, and analysis.",
+        "tabs": {
+            "dashboard": "Dashboard",
+            "activity": "Live Activity",
+            "management": "Management",
+            "bot_farms": "Bot Farms"
+        },
+        "dashboard": {
+            "time_spent": "Time Spent (Today)",
+            "avg_risk": "Avg Risk Score",
+            "threat_monitor": "Threat Monitor",
+            "refresh_trends": "Refresh Trends (Real-time)",
+            "add_queue": "Add to Training Queue",
+            "no_threats": "No active threats detected.",
+            "training_queue": "Training Queue (RAG)",
+            "approved_items": "approved items ready for batch training",
+            "train_batch": "Train Model (Batch)",
+            "fetch_intel": "Fetch New Intel",
+            "model_kb": "Model Knowledge Base",
+            "total_docs": "Total documents trained",
+            "view_sources": "View All Sources",
+            "data_inbox": "Data Inbox",
+            "refresh": "Refresh",
+            "run_pipeline": "Run Pipeline",
+            "no_pending": "No pending items to review.",
+            "view_all_pending": "View all pending items in Management tab",
+            "ai_analysis": "AI Analysis:",
+            "discard": "Discard",
+            "approve": "Approve"
+        },
+        "activity": {
+            "subject_log": "Subject Activity Log",
+            "no_activity": "No activity recorded yet.",
+            "simulator": "Simulator",
+            "paste_placeholder": "Paste text content here...",
+            "ingest": "Ingest Content",
+            "scanning": "Scanning..."
+        },
+        "management": {
+            "add_topic": "Add Topic",
+            "add_source": "Add Source",
+            "system_status": "System Status",
+            "active_sources": "Active Sources",
+            "monitored_topics": "Monitored Topics",
+            "pending_items": "Pending Items",
+            "total_kb": "Total Knowledge Base"
+        },
+        "modal": {
+            "title": "Knowledge Base Sources",
+            "unknown_type": "Unknown Type"
+        }
+    }
+}

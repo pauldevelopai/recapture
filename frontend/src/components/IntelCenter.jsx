@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import axios from 'axios';
 import {
     Database, Plus, Trash2, Play, Check, X, RefreshCw, Rss, Globe,
@@ -9,6 +10,7 @@ import BotFarmMonitor from './BotFarmMonitor';
 
 
 export default function IntelCenter() {
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState('dashboard');
 
     // --- DataLab State ---
@@ -150,8 +152,8 @@ export default function IntelCenter() {
         <div className="intel-center">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h1>Intel Center</h1>
-                    <p className="text-muted">Unified command for threat intelligence, monitoring, and analysis.</p>
+                    <h1>{t('intel.title')}</h1>
+                    <p className="text-muted">{t('intel.subtitle')}</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                     <button
@@ -159,28 +161,28 @@ export default function IntelCenter() {
                         onClick={() => setActiveTab('dashboard')}
                         style={{ background: activeTab === 'dashboard' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
                     >
-                        <LayoutDashboard size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Dashboard
+                        <LayoutDashboard size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.tabs.dashboard')}
                     </button>
                     <button
                         className={`tab-btn ${activeTab === 'activity' ? 'active' : ''}`}
                         onClick={() => setActiveTab('activity')}
                         style={{ background: activeTab === 'activity' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
                     >
-                        <Activity size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Live Activity
+                        <Activity size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.tabs.activity')}
                     </button>
                     <button
                         className={`tab-btn ${activeTab === 'management' ? 'active' : ''}`}
                         onClick={() => setActiveTab('management')}
                         style={{ background: activeTab === 'management' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
                     >
-                        <Database size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Management
+                        <Database size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.tabs.management')}
                     </button>
                     <button
                         className={`tab-btn ${activeTab === 'bot-farms' ? 'active' : ''}`}
                         onClick={() => setActiveTab('bot-farms')}
                         style={{ background: activeTab === 'bot-farms' ? 'var(--primary)' : 'var(--surface)', color: 'white', padding: '0.5rem 1rem', borderRadius: 'var(--radius)' }}
                     >
-                        <ShieldAlert size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Bot Farms
+                        <ShieldAlert size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.tabs.bot_farms')}
                     </button>
                 </div>
             </div>
@@ -190,13 +192,13 @@ export default function IntelCenter() {
                 <div className="dashboard-tab">
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
                         <div className="card">
-                            <h3><Clock size={20} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Time Spent (Today)</h3>
+                            <h3><Clock size={20} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.dashboard.time_spent')}</h3>
                             <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: '1rem 0' }}>
                                 {totalTime} <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>min</span>
                             </div>
                         </div>
                         <div className="card">
-                            <h3><AlertTriangle size={20} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Avg Risk Score</h3>
+                            <h3><AlertTriangle size={20} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> {t('intel.dashboard.avg_risk')}</h3>
                             <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: avgRisk > 0.5 ? 'var(--danger)' : 'var(--success)', margin: '1rem 0' }}>
                                 {(avgRisk * 10).toFixed(1)} <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/ 10</span>
                             </div>
@@ -204,7 +206,7 @@ export default function IntelCenter() {
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                        <h2>Threat Monitor</h2>
+                        <h2>{t('intel.dashboard.threat_monitor')}</h2>
                         <button
                             className="btn btn-primary"
                             onClick={async () => {
@@ -217,7 +219,7 @@ export default function IntelCenter() {
                             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                         >
                             {loadingTrends ? <RefreshCw className="animate-spin" size={16} /> : <Globe size={16} />}
-                            Refresh Trends (Real-time)
+                            {t('intel.dashboard.refresh_trends')}
                         </button>
                     </div>
 
@@ -256,11 +258,11 @@ export default function IntelCenter() {
                                             }}
                                         >
                                             <Plus size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                                            Add to Training Queue
+                                            {t('intel.dashboard.add_queue')}
                                         </button>
                                     </div>
                                 ))}
-                                {(trends || []).length === 0 && <p className="text-muted">No active threats detected.</p>}
+                                {(trends || []).length === 0 && <p className="text-muted">{t('intel.dashboard.no_threats')}</p>}
                             </div>
                             {/* Trend Pagination */}
                             {trends.length > itemsPerPage && (
@@ -281,9 +283,9 @@ export default function IntelCenter() {
                     {/* Training Queue Section */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
                         <div>
-                            <h2>Training Queue (RAG)</h2>
+                            <h2>{t('intel.dashboard.training_queue')}</h2>
                             <p className="text-muted" style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem' }}>
-                                {content.filter(c => c.status === 'approved').length} approved items ready for batch training
+                                {content.filter(c => c.status === 'approved').length} {t('intel.dashboard.approved_items')}
                             </p>
                         </div>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -301,10 +303,10 @@ export default function IntelCenter() {
                                 }}
                             >
                                 {loadingBatchTrain ? <RefreshCw className="animate-spin" size={18} /> : <Database size={18} />}
-                                Train Model (Batch)
+                                {t('intel.dashboard.train_batch')}
                             </button>
                             <button className="btn btn-primary" onClick={handleRunPipeline} disabled={loadingPipeline} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} Fetch New Intel
+                                {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} {t('intel.dashboard.fetch_intel')}
                             </button>
                         </div>
                     </div>
@@ -313,13 +315,13 @@ export default function IntelCenter() {
                     <div className="card" style={{ marginBottom: '1rem', background: 'rgba(99, 102, 241, 0.1)', borderLeft: '4px solid var(--primary)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
-                                <strong style={{ color: 'var(--primary)' }}><Database size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />Model Knowledge Base</strong>
-                                <p className="text-muted" style={{ margin: '0.25rem 0 0 0', fontSize: '0.9rem' }}>Total documents trained</p>
+                                <strong style={{ color: 'var(--primary)' }}><Database size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />{t('intel.dashboard.model_kb')}</strong>
+                                <p className="text-muted" style={{ margin: '0.25rem 0 0 0', fontSize: '0.9rem' }}>{t('intel.dashboard.total_docs')}</p>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                                 <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)' }}>{modelStats.total_documents}</div>
                                 <button onClick={() => setShowSourcesModal(true)} style={{ background: 'var(--surface)', border: '1px solid var(--primary)', color: 'var(--primary)', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer' }}>
-                                    View All Sources
+                                    {t('intel.dashboard.view_sources')}
                                 </button>
                             </div>
                         </div>
@@ -369,7 +371,7 @@ export default function IntelCenter() {
                         <div className="space-y-6">
                             {/* Subject Activity Log */}
                             <div className="card">
-                                <h3>Subject Activity Log</h3>
+                                <h3>{t('intel.activity.subject_log')}</h3>
                                 <div className="list">
                                     {logs.slice((logPage - 1) * itemsPerPage, logPage * itemsPerPage).map(log => (
                                         <div key={log.id} style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
@@ -382,7 +384,7 @@ export default function IntelCenter() {
                                             </div>
                                         </div>
                                     ))}
-                                    {logs.length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '1rem' }}>No activity recorded yet.</p>}
+                                    {logs.length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '1rem' }}>{t('intel.activity.no_activity')}</p>}
 
                                     {/* Log Pagination */}
                                     {logs.length > itemsPerPage && (
@@ -397,9 +399,9 @@ export default function IntelCenter() {
                         </div>
                         <div>
                             <div className="card" style={{ position: 'sticky', top: '1rem' }}>
-                                <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 0 }}><Smartphone size={20} /> Simulator</h3>
-                                <textarea value={simulatedContent} onChange={(e) => setSimulatedContent(e.target.value)} placeholder="Paste text content here..." rows={5} style={{ marginBottom: '1rem' }} />
-                                <button onClick={handleSimulateIngestion} disabled={isScanning || !simulatedContent.trim()} style={{ width: '100%' }}>{isScanning ? 'Scanning...' : 'Ingest Content'}</button>
+                                <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 0 }}><Smartphone size={20} /> {t('intel.activity.simulator')}</h3>
+                                <textarea value={simulatedContent} onChange={(e) => setSimulatedContent(e.target.value)} placeholder={t('intel.activity.paste_placeholder')} rows={5} style={{ marginBottom: '1rem' }} />
+                                <button onClick={handleSimulateIngestion} disabled={isScanning || !simulatedContent.trim()} style={{ width: '100%' }}>{isScanning ? t('intel.activity.scanning') : t('intel.activity.ingest')}</button>
                             </div>
                         </div>
                     </div>
@@ -411,7 +413,7 @@ export default function IntelCenter() {
                 <div className="management-tab">
                     <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
                         <div className="card" style={{ flex: 1, minWidth: '300px' }}>
-                            <h3>Add Topic</h3>
+                            <h3>{t('intel.management.add_topic')}</h3>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                 <input type="text" value={newTopic} onChange={(e) => setNewTopic(e.target.value)} placeholder="e.g. 'Flat Earth'" style={{ flex: 1 }} />
                                 <button onClick={handleAddTopic} disabled={!newTopic}><Plus size={18} /></button>
@@ -421,7 +423,7 @@ export default function IntelCenter() {
                             </div>
                         </div>
                         <div className="card" style={{ flex: 1, minWidth: '300px' }}>
-                            <h3>Add Source</h3>
+                            <h3>{t('intel.management.add_source')}</h3>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                 <input type="text" value={newSourceUrl} onChange={(e) => setNewSourceUrl(e.target.value)} placeholder="URL..." style={{ flex: 1 }} />
                                 <button onClick={handleAddSource} disabled={!newSourceUrl}><Plus size={18} /></button>
@@ -434,55 +436,67 @@ export default function IntelCenter() {
 
                     {/* System Status Summary */}
                     <div className="card" style={{ marginBottom: '2rem', background: 'rgba(99, 102, 241, 0.05)', border: '1px solid var(--primary)' }}>
-                        <h3>System Status</h3>
+                        <h3>{t('intel.management.system_status')}</h3>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
                             <div>
-                                <div className="text-muted text-sm">Active Sources</div>
+                                <div className="text-muted text-sm">{t('intel.management.active_sources')}</div>
                                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{sources.length}</div>
                             </div>
                             <div>
-                                <div className="text-muted text-sm">Monitored Topics</div>
+                                <div className="text-muted text-sm">{t('intel.management.monitored_topics')}</div>
                                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{topics.length}</div>
                             </div>
                             <div>
-                                <div className="text-muted text-sm">Pending Items</div>
+                                <div className="text-muted text-sm">{t('intel.management.pending_items')}</div>
                                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{content.filter(c => c.status === 'pending').length}</div>
                             </div>
                             <div>
-                                <div className="text-muted text-sm">Total Knowledge Base</div>
+                                <div className="text-muted text-sm">{t('intel.management.total_kb')}</div>
                                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{modelStats.total_documents}</div>
                             </div>
                         </div>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                        <h2>Data Inbox</h2>
+                        <h2>{t('intel.dashboard.data_inbox')}</h2>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
                             <button className="btn" onClick={fetchContent} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <RefreshCw size={18} /> Refresh
+                                <RefreshCw size={18} /> {t('intel.dashboard.refresh')}
                             </button>
                             <button className="btn btn-primary" onClick={handleRunPipeline} disabled={loadingPipeline} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} Run Pipeline
+                                {loadingPipeline ? <RefreshCw className="animate-spin" size={18} /> : <Play size={18} />} {t('intel.dashboard.run_pipeline')}
                             </button>
                         </div>
                     </div>
 
                     <div className="inbox-list">
-                        {content.filter(c => c.status === 'pending').map(item => (
+                        {content.filter(c => c.status === 'pending').slice(0, 3).map(item => (
                             <div key={item.id} className="card" style={{ marginBottom: '1rem', borderLeft: item.risk_score > 0.5 ? '4px solid var(--danger)' : '4px solid var(--success)' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                    <span className="badge" style={{ background: 'rgba(255,255,255,0.1)' }}>{item.status.toUpperCase()}</span>
+                                    <span className="badge" style={{
+                                        background: item.status === 'approved' ? 'rgba(34, 197, 94, 0.2)' :
+                                            item.status === 'trained' ? 'rgba(99, 102, 241, 0.2)' :
+                                                'rgba(255,255,255,0.1)',
+                                        color: item.status === 'approved' ? 'var(--success)' :
+                                            item.status === 'trained' ? 'var(--primary)' :
+                                                'white'
+                                    }}>{item.status.toUpperCase()}</span>
                                     <span className="text-muted" style={{ fontSize: '0.8rem' }}>{new Date(item.timestamp).toLocaleString()}</span>
                                 </div>
                                 <p style={{ marginBottom: '0.5rem', whiteSpace: 'pre-wrap' }}>{item.content.substring(0, 300)}...</p>
-                                {item.analysis_summary && <div style={{ background: 'rgba(0,0,0,0.2)', padding: '0.5rem', borderRadius: '4px', marginBottom: '1rem', fontSize: '0.9rem' }}><strong>AI Analysis:</strong> {item.analysis_summary}</div>}
+                                {item.analysis_summary && <div style={{ background: 'rgba(0,0,0,0.2)', padding: '0.5rem', borderRadius: '4px', marginBottom: '1rem', fontSize: '0.9rem' }}><strong>{t('intel.dashboard.ai_analysis')}</strong> {item.analysis_summary}</div>}
                                 <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
-                                    <button onClick={() => handleDiscard(item.id)} className="btn" style={{ background: 'transparent', border: '1px solid var(--danger)', color: 'var(--danger)' }}><X size={16} /> Discard</button>
-                                    <button onClick={() => handleApprove(item.id)} className="btn" style={{ background: 'var(--success)', border: 'none', color: 'white' }}><Check size={16} /> Approve</button>
+                                    <button onClick={() => handleDiscard(item.id)} className="btn" style={{ background: 'transparent', border: '1px solid var(--danger)', color: 'var(--danger)' }}><X size={16} /> {t('intel.dashboard.discard')}</button>
+                                    <button onClick={() => handleApprove(item.id)} className="btn" style={{ background: 'var(--success)', border: 'none', color: 'white' }}><Check size={16} /> {t('intel.dashboard.approve')}</button>
                                 </div>
                             </div>
                         ))}
-                        {content.filter(c => c.status === 'pending').length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '2rem' }}>No pending items to review.</p>}
+                        {content.filter(c => c.status === 'pending').length === 0 && <p className="text-muted" style={{ textAlign: 'center', padding: '2rem' }}>{t('intel.dashboard.no_pending')}</p>}
+                        {content.filter(c => c.status === 'pending').length > 3 && (
+                            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                                <button className="btn" onClick={() => setActiveTab('management')} style={{ color: 'var(--primary)' }}>{t('intel.dashboard.view_all_pending')} &rarr;</button>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
@@ -494,7 +508,7 @@ export default function IntelCenter() {
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
                     <div className="card" style={{ width: '90%', maxWidth: '800px', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: '0' }}>
                         <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h2 style={{ margin: 0 }}>Knowledge Base Sources</h2>
+                            <h2 style={{ margin: 0 }}>{t('intel.modal.title')}</h2>
                             <button onClick={() => setShowSourcesModal(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text)' }}><X size={24} /></button>
                         </div>
                         <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1 }}>
@@ -505,7 +519,7 @@ export default function IntelCenter() {
                                     {ragDocuments.map((doc, i) => (
                                         <div key={i} style={{ padding: '1rem', background: 'var(--background)', borderRadius: '8px', border: '1px solid var(--border)' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                                <strong style={{ color: 'var(--primary)' }}>{doc.metadata?.type || 'Unknown Type'}</strong>
+                                                <strong style={{ color: 'var(--primary)' }}>{doc.metadata?.type || t('intel.modal.unknown_type')}</strong>
                                                 <span className="text-muted" style={{ fontSize: '0.8rem' }}>ID: {doc.id.substring(0, 8)}...</span>
                                             </div>
                                             <p style={{ fontSize: '0.9rem', margin: 0, whiteSpace: 'pre-wrap' }}>{doc.content.substring(0, 200)}...</p>

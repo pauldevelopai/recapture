@@ -26,6 +26,7 @@ export const SUPPORTED_LANGUAGES = [
 
 export const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState('en');
+    const [translations, setTranslations] = useState({});
 
     useEffect(() => {
         const savedLang = localStorage.getItem('recapture_language');
@@ -34,13 +35,59 @@ export const LanguageProvider = ({ children }) => {
         }
     }, []);
 
+    // Load translations when language changes
+    useEffect(() => {
+        const loadTranslations = async () => {
+            try {
+                // In a real app, we might dynamic import. 
+                // For now, we'll assume files exist or fallback to English.
+                // We'll start by just loading the current language file.
+                // Note: Vite/Webpack dynamic imports work best here.
+
+                let transData;
+                try {
+                    // Attempt to load the specific language file
+                    // This relies on Vite's dynamic import capabilities
+                    const module = await import(`../translations/${language}.json`);
+                    transData = module.default;
+                } catch (e) {
+                    console.warn(`Could not load translations for ${language}, falling back to English`);
+                    const module = await import(`../translations/en.json`);
+                    transData = module.default;
+                }
+                setTranslations(transData);
+            } catch (err) {
+                console.error("Failed to load translations:", err);
+            }
+        };
+
+        loadTranslations();
+    }, [language]);
+
     const changeLanguage = (langCode) => {
         setLanguage(langCode);
         localStorage.setItem('recapture_language', langCode);
     };
 
+    // Translation helper function
+    // Supports nested keys like 'dashboard.title'
+    const t = (key) => {
+        const keys = key.split('.');
+        let value = translations;
+
+        for (const k of keys) {
+            if (value && value[k] !== undefined) {
+                value = value[k];
+            } else {
+                return key; // Fallback to key if not found
+            }
+        }
+
+        return value;
+    };
+
     return (
-        <LanguageContext.Provider value={{ language, changeLanguage, SUPPORTED_LANGUAGES }}>
+        <LanguageContext.Provider value={{ language, changeLanguage, t, SUPPORTED_LANGUAGES }}>
             {children}
         </LanguageContext.Provider>
     );

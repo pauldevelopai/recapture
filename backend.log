@@ -1,8 +1,8 @@
 INFO:     Will watch for changes in these directories: ['/Users/paulmcnally/Developai Dropbox/Paul McNally/Mac/Documents/ONMAC/PYTHON 2025/recapture']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [15174] using WatchFiles
+INFO:     Started reloader process [34547] using WatchFiles
 INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [15371]
+INFO:     Started server process [34744]
 INFO:     Waiting for application startup.
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:     Application startup complete.
@@ -11,374 +11,278 @@ Starting data ingestion...
 Collection cleared.
 Successfully added 57 documents to vector store.
 Data ingestion complete. Ingested 57 items.
-INFO:     127.0.0.1:52853 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52853 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52888 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52890 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52888 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52891 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52890 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52892 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52891 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52893 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52892 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52894 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52893 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52895 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52894 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52893 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52895 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52942 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52942 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52942 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52942 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52942 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52944 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52944 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52944 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52944 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52944 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52896 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52953 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52954 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52954 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52961 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52961 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52970 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52971 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52970 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52971 - "GET /api/subjects/at-risk HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52972 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52973 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52991 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52991 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53000 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53001 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53000 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53001 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53033 - "GET /api/profiles HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53033 - "GET /api/profiles HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53046 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53048 - "GET /api/profiles HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53083 - "GET /api/subjects/test-sarah-1/clone HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:53097 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53098 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53099 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53097 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53098 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53100 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53099 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53101 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53100 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53102 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53101 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53103 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53102 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53104 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53100 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53102 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53102 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53102 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53108 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53110 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53110 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53114 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53114 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53121 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53123 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53123 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53125 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53130 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53125 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53134 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53134 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53144 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53145 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53134 - "GET /sources HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53146 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53144 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53145 - "GET /api/listening/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53147 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53134 - "GET /topics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53148 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53147 - "GET /pipeline/content HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53149 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53148 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53150 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53134 - "GET /trends HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53150 - "GET /pipeline/stats HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53150 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53151 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53153 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53157 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53157 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53159 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53159 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53160 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53161 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53161 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53166 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53166 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53167 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53167 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53166 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53166 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53168 - "GET /api/bot-farms HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53169 - "GET /api/campaigns HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53169 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53169 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53169 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53179 - "OPTIONS /api/generate-argument HTTP/1.1" 200 OK
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-INFO:backend.empathy_service:Loading empathy model: bdotloh/roberta-base-empathy
-Device set to use mps:0
-INFO:backend.empathy_service:Empathy model loaded successfully
-INFO:backend.empathy_service:Loading emotion model: michellejieli/emotion_text_classifier
-Device set to use mps:0
-INFO:backend.empathy_service:Emotion model loaded successfully
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:     127.0.0.1:53179 - "POST /api/generate-argument HTTP/1.1" 200 OK
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 400 Bad Request"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Error querying documents: Error code: 400 - {'error': {'message': "'$.input' is invalid. Please check the API reference: https://platform.openai.com/docs/api-reference.", 'type': 'invalid_request_error', 'param': None, 'code': None}} in query.
-INFO:     127.0.0.1:53198 - "POST /api/generate-argument HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'backend/digital_clone_service.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [15371]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [18278]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'backend/models.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [18278]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [18347]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-DEBUG: OpenAI API Key loaded: True
-Starting data ingestion...
-Collection cleared.
-Successfully added 57 documents to vector store.
-Data ingestion complete. Ingested 57 items.
-INFO:     127.0.0.1:53936 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53936 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53936 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53959 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53960 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53959 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53960 - "GET /api/clones HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53998 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:     127.0.0.1:54016 - "POST /api/clones/f2e241b9-003f-4285-a270-442968a06c33/train HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54045 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54146 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54146 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54146 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54146 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54146 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54167 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54167 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54167 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54304 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54305 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54304 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54305 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54304 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54305 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54305 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54304 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54330 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54331 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54330 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54331 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54558 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54558 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54561 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54558 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54558 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54559 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54560 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54560 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54605 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54606 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54605 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54607 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54606 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54605 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54607 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54609 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54606 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54605 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54607 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54606 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54609 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54607 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54607 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54609 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54609 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:54607 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54609 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54609 - "GET /api/subjects HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'backend/subjects.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [18347]
-INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-INFO:     Started server process [21620]
-INFO:     Waiting for application startup.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:     Application startup complete.
-DEBUG: OpenAI API Key loaded: True
-Starting data ingestion...
-Collection cleared.
-Successfully added 57 documents to vector store.
-Data ingestion complete. Ingested 57 items.
-INFO:     127.0.0.1:56055 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56056 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56055 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56056 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56058 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56055 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56056 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56058 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56058 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56082 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56083 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56082 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56083 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56083 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56083 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56097 - "OPTIONS /api/clones/f2e241b9-003f-4285-a270-442968a06c33/chat HTTP/1.1" 200 OK
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-INFO:backend.empathy_service:Loading empathy model: bdotloh/roberta-base-empathy
-Device set to use mps:0
-INFO:backend.empathy_service:Empathy model loaded successfully
-INFO:backend.empathy_service:Loading emotion model: michellejieli/emotion_text_classifier
-Device set to use mps:0
-INFO:backend.empathy_service:Emotion model loaded successfully
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:     127.0.0.1:56097 - "POST /api/clones/f2e241b9-003f-4285-a270-442968a06c33/chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57327 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57327 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57327 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57327 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57330 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57330 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57330 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57325 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57326 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57329 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57386 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57386 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57380 - "GET /api/subjects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57379 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57378 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57384 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60206 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60207 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60206 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60207 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60207 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60207 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60205 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60204 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60216 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60216 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60258 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60258 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60261 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60262 - "GET /api/subjects/at-risk HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60261 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60262 - "GET /api/subjects/at-risk HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60261 - "GET /api/subjects/test-subject-1764096486/authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60263 - "GET /api/subjects/test-subject-1764096486/recommended-authorities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60266 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60267 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60268 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60266 - "GET /api/listening/feed?page=1&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60267 - "GET /api/listening/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60269 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60268 - "GET /sources HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60270 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60269 - "GET /topics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60270 - "GET /pipeline/content HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60273 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60269 - "GET /trends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /pipeline/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60292 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60292 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60307 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60307 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60307 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60307 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects/test-subject-1764096486/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60319 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60319 - "GET /api/subjects/test-subject-1764096486/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60318 - "GET /api/subjects/test-subject-1764096486/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60348 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60349 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60348 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60349 - "GET /api/clones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60350 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60350 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects/test-sarah-1/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects/test-sarah-1/social-feeds HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects/test-sarah-1/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60350 - "GET /api/subjects/test-sarah-1/social-posts?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects/test-sarah-1/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects/test-sarah-1/risk-analysis HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60351 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62277 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62277 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63538 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63538 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63538 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63538 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63538 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63536 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63537 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63539 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63626 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63621 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63623 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63622 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63625 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63672 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63672 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "GET /api/subjects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/subjects/test-subject-1764096486/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "GET /api/subjects/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63671 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/test-sarah-1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/clones/f2e241b9-003f-4285-a270-442968a06c33/conversations HTTP/1.1" 200 OK

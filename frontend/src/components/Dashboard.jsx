@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import axios from 'axios';
 import { TrendingUp, Activity, Shield, Users } from 'lucide-react';
 
 export default function Dashboard() {
+    const { t } = useLanguage();
     const [profiles, setProfiles] = useState([]);
     const [selectedProfile, setSelectedProfile] = useState('');
     const [logs, setLogs] = useState([]);
@@ -42,16 +44,16 @@ export default function Dashboard() {
     const avgRisk = logs.length > 0 ? logs.reduce((acc, l) => acc + (l.risk_score || 0), 0) / logs.length : 0;
 
     // Determine Risk Level Label
-    let riskLabel = "Low";
+    let riskLabel = t('risk.low');
     let riskColor = "var(--success)";
     let riskBg = "rgba(34, 197, 94, 0.1)";
 
     if (avgRisk > 0.7) {
-        riskLabel = "High";
+        riskLabel = t('risk.high');
         riskColor = "var(--danger)";
         riskBg = "rgba(239, 68, 68, 0.1)";
     } else if (avgRisk > 0.3) {
-        riskLabel = "Moderate";
+        riskLabel = t('risk.moderate');
         riskColor = "var(--warning)";
         riskBg = "rgba(234, 179, 8, 0.1)";
     }
@@ -64,8 +66,8 @@ export default function Dashboard() {
         <div className="dashboard">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h1>Success Tracking</h1>
-                    <p className="text-muted">Track the progress of recapturing and de-radicalization efforts.</p>
+                    <h1>{t('dashboard.title')}</h1>
+                    <p className="text-muted">{t('dashboard.subtitle')}</p>
                 </div>
 
                 <div style={{ position: 'relative' }}>
@@ -76,7 +78,7 @@ export default function Dashboard() {
                         style={{ padding: '0.5rem 0.5rem 0.5rem 2.5rem', borderRadius: 'var(--radius)', minWidth: '200px' }}
                     >
                         {profiles.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
-                        {profiles.length === 0 && <option value="">No profiles found</option>}
+                        {profiles.length === 0 && <option value="">{t('dashboard.no_profiles')}</option>}
                     </select>
                 </div>
             </div>
@@ -88,7 +90,7 @@ export default function Dashboard() {
                             <Activity size={24} />
                         </div>
                         <div>
-                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>Total Scans</div>
+                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>{t('dashboard.total_scans')}</div>
                             <div style={{ fontSize: '1.5rem', fontWeight: '700' }}>{totalScans}</div>
                         </div>
                     </div>
@@ -100,7 +102,7 @@ export default function Dashboard() {
                             <Shield size={24} />
                         </div>
                         <div>
-                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>Avg Risk Level</div>
+                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>{t('dashboard.avg_risk')}</div>
                             <div style={{ fontSize: '1.5rem', fontWeight: '700', color: riskColor }}>{riskLabel}</div>
                         </div>
                     </div>
@@ -112,7 +114,7 @@ export default function Dashboard() {
                             <TrendingUp size={24} />
                         </div>
                         <div>
-                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>Progress</div>
+                            <div className="text-muted" style={{ fontSize: '0.875rem' }}>{t('dashboard.progress')}</div>
                             <div style={{ fontSize: '1.5rem', fontWeight: '700' }}>{progress}</div>
                         </div>
                     </div>
@@ -120,8 +122,8 @@ export default function Dashboard() {
             </div>
 
             <div className="card">
-                <h3>Recent Activity Log</h3>
-                {loading ? <p>Loading activity...</p> : (
+                <h3>{t('dashboard.recent_activity')}</h3>
+                {loading ? <p>{t('dashboard.loading_activity')}</p> : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         {logs.slice(0, 5).map((log) => (
                             <div key={log.id} style={{
@@ -134,7 +136,7 @@ export default function Dashboard() {
                                 gap: '0.5rem'
                             }}>
                                 <div>
-                                    <div style={{ fontWeight: '500' }}>Content Scan</div>
+                                    <div style={{ fontWeight: '500' }}>{t('dashboard.content_scan')}</div>
                                     <div className="text-muted" style={{ fontSize: '0.875rem' }}>
                                         {log.content.substring(0, 50)}...
                                     </div>
@@ -146,12 +148,12 @@ export default function Dashboard() {
                                         color: (log.risk_score || 0) > 0.5 ? 'var(--danger)' : 'var(--success)',
                                         fontWeight: 'bold'
                                     }}>
-                                        Risk: {((log.risk_score || 0) * 10).toFixed(1)}
+                                        {t('dashboard.risk_label')} {((log.risk_score || 0) * 10).toFixed(1)}
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        {logs.length === 0 && <p className="text-muted">No activity recorded for this profile.</p>}
+                        {logs.length === 0 && <p className="text-muted">{t('dashboard.no_activity')}</p>}
                     </div>
                 )}
             </div>

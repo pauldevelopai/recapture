@@ -3,16 +3,20 @@
 > vite
 
 
-  VITE v7.2.4  ready in 238 ms
+  VITE v7.2.4  ready in 220 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-10:03:49 AM [vite] (client) hmr update /src/components/Dashboard.jsx
-10:06:47 AM [vite] (client) hmr update /src/components/CloneChat.jsx
-10:09:43 AM [vite] (client) hmr update /src/components/CloneChat.jsx
-10:11:18 AM [vite] (client) hmr update /src/context/LanguageContext.jsx
-10:11:18 AM [vite] (client) hmr invalidate /src/context/LanguageContext.jsx Could not Fast Refresh ("SUPPORTED_LANGUAGES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-10:11:18 AM [vite] (client) page reload src/context/LanguageContext.jsx
-10:11:20 AM [vite] (client) hmr update /src/components/CloneChat.jsx
-10:17:07 AM [vite] (client) hmr update /src/components/CloneChat.jsx
-12:13:34 PM [vite] (client) hmr update /src/components/CloneChat.jsx
+3:05:50 PM [vite] (client) hmr update /src/context/LanguageContext.jsx
+3:05:50 PM [vite] (client) hmr invalidate /src/context/LanguageContext.jsx Could not Fast Refresh ("SUPPORTED_LANGUAGES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+3:05:50 PM [vite] (client) page reload src/context/LanguageContext.jsx
+3:07:00 PM [vite] (client) hmr update /src/context/LanguageContext.jsx
+3:07:00 PM [vite] (client) hmr invalidate /src/context/LanguageContext.jsx Could not Fast Refresh ("SUPPORTED_LANGUAGES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+3:07:00 PM [vite] (client) page reload src/context/LanguageContext.jsx
+3:07:02 PM [vite] (client) hmr update /src/components/Dashboard.jsx
+3:07:04 PM [vite] (client) hmr update /src/components/Dashboard.jsx
+3:07:34 PM [vite] (client) hmr update /src/context/LanguageContext.jsx
+3:07:34 PM [vite] (client) hmr invalidate /src/context/LanguageContext.jsx Could not Fast Refresh ("SUPPORTED_LANGUAGES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+3:07:34 PM [vite] (client) page reload src/context/LanguageContext.jsx
+3:09:43 PM [vite] (client) hmr update /src/components/IntelCenter.jsx
+3:11:27 PM [vite] (client) hmr update /src/components/IntelCenter.jsx
