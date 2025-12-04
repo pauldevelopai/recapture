@@ -42,6 +42,25 @@ async def create_subject(subject: Subject):
     conn.close()
     return subject
 
+@router.get("/subjects/{subject_id}", response_model=Subject)
+async def get_subject(subject_id: str):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM subjects WHERE id = ?", (subject_id,))
+    row = cursor.fetchone()
+    conn.close()
+    
+    if not row:
+        raise HTTPException(status_code=404, detail="Subject not found")
+        
+    return Subject(
+        id=row['id'],
+        name=row['name'],
+        age=row['age'],
+        risk_level=row['risk_level'],
+        notes=row['notes']
+    )
+
 @router.put("/subjects/{subject_id}", response_model=Subject)
 async def update_subject(subject_id: str, subject: Subject):
     conn = get_db_connection()
